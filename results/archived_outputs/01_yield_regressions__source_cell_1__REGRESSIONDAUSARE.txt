@@ -1,0 +1,97 @@
+Dati principali e dati BTC caricati con successo.
+DataFrame uniti con successo.
+Analisi condotta su 1715 osservazioni giornaliere.
+
+Esecuzione del Modello Parsimonioso (solo risk-free)...
+
+Esecuzione del Modello Completo (con tutti i controlli)...
+
+========================= MODELLO 1: PARSIMONIOSO =========================
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             stablecoin   R-squared:                       0.002
+Model:                            OLS   Adj. R-squared:                  0.002
+Method:                 Least Squares   F-statistic:                     3.993
+Date:                Thu, 13 Nov 2025   Prob (F-statistic):             0.0458
+Time:                        14:00:15   Log-Likelihood:                 12997.
+No. Observations:                1715   AIC:                        -2.599e+04
+Df Residuals:                    1713   BIC:                        -2.598e+04
+Df Model:                           1                                         
+Covariance Type:                  HAC                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.0002   7.61e-06     20.463      0.000       0.000       0.000
+future 2y      0.0054      0.003      1.998      0.046       0.000       0.011
+==============================================================================
+Omnibus:                      381.926   Durbin-Watson:                   0.288
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              718.381
+Skew:                           1.352   Prob(JB):                    1.01e-156
+Kurtosis:                       4.657   Cond. No.                         941.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 7 lags and without small sample correction
+===========================================================================
+
+========================= MODELLO 2: COMPLETO ===========================
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             stablecoin   R-squared:                       0.269
+Model:                            OLS   Adj. R-squared:                  0.266
+Method:                 Least Squares   F-statistic:                     14.96
+Date:                Thu, 13 Nov 2025   Prob (F-statistic):           9.75e-17
+Time:                        14:00:15   Log-Likelihood:                 13264.
+No. Observations:                1715   AIC:                        -2.651e+04
+Df Residuals:                    1708   BIC:                        -2.648e+04
+Df Model:                           6                                         
+Covariance Type:                  HAC                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const              0.0002   1.41e-05     10.890      0.000       0.000       0.000
+future 2y          0.0054      0.002      2.398      0.016       0.001       0.010
+ethperpetual       0.0809      0.013      6.316      0.000       0.056       0.106
+gas_fees        2.156e-07   1.46e-07      1.477      0.140   -7.05e-08    5.02e-07
+VIX             1.656e-05    3.6e-05      0.460      0.646    -5.4e-05    8.71e-05
+btc_return         0.0001      0.000      1.246      0.213   -7.28e-05       0.000
+volatility_btc    -0.0013      0.001     -2.559      0.010      -0.002      -0.000
+==============================================================================
+Omnibus:                      446.717   Durbin-Watson:                   0.489
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1155.683
+Skew:                           1.379   Prob(JB):                    1.11e-251
+Kurtosis:                       5.928   Cond. No.                     1.03e+05
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 7 lags and without small sample correction
+[2] The condition number is large, 1.03e+05. This might indicate that there are
+strong multicollinearity or other numerical problems.
+===========================================================================
+
+==================== TABELLA DI CONFRONTO DEI MODELLI ====================
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+| Variable          | Model_Parsimonious_Coeff   | Model_Parsimonious_PValue   |   Model_Full_Coeff | Model_Full_PValue      |
++===================+============================+=============================+====================+========================+
+| future 2y         | 0.005400297204906252       | 0.04568580992488652         |             0.0054 | 0.016478902062317308   |
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+| ethperpetual      |                            |                             |             0.0809 | 2.6837557166370906e-10 |
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+| gas_fees          |                            |                             |             0.0000 | 0.13967182844843104    |
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+| VIX               |                            |                             |             0.0000 | 0.6455759064425715     |
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+| btc_return        |                            |                             |             0.0001 | 0.2127361088571963     |
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+| volatility_btc    |                            |                             |            -0.0013 | 0.010497656808740676   |
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+| Adj. R-squared    | 0.0015647692721908468      |                             |             0.2665 |                        |
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+| Num. Observations | 1715.0                     |                             |          1715.0000 |                        |
++-------------------+----------------------------+-----------------------------+--------------------+------------------------+
+============================================================================
+
+<original notebook execution>:18: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_main = pd.read_csv(main_data_filename, parse_dates=[date_col], dayfirst=True)
+<original notebook execution>:22: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_btc = pd.read_csv(btc_data_filename, parse_dates=["Date"], dayfirst=True)

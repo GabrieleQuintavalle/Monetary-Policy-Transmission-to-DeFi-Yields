@@ -1,0 +1,960 @@
+{
+  "date": "2026-11-06",
+  "checks": [
+    {
+      "check": "Table 3.4 Curve Treasury coefficient",
+      "actual": 0.0029989818015086172,
+      "expected": 0.003,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.4 Curve Treasury z-statistic",
+      "actual": 6.095489088524187,
+      "expected": 6.095,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.4 Curve adjusted R-squared",
+      "actual": 0.11890265432214364,
+      "expected": 0.119,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.4 Curve observations",
+      "actual": 1715.0,
+      "expected": 1715,
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Table 3.6 lending Treasury coefficient",
+      "actual": 0.002743268362225773,
+      "expected": 0.0027,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.6 lending Treasury z-statistic",
+      "actual": 5.975906892306854,
+      "expected": 5.976,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.6 lending adjusted R-squared",
+      "actual": 0.3505616543990918,
+      "expected": 0.351,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.6 lending observations",
+      "actual": 1715.0,
+      "expected": 1715,
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Table 3.6 funding coefficient",
+      "actual": 0.07552315085172728,
+      "expected": 0.0755,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.6 funding z-statistic",
+      "actual": 6.593473045539409,
+      "expected": 6.593,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.6 parsimonious Treasury z-statistic",
+      "actual": 0.8840970221242461,
+      "expected": 0.884,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Chow first break F",
+      "actual": 2.8081203475972663,
+      "expected": 2.81,
+      "precision_decimal_places": 2,
+      "passed": true
+    },
+    {
+      "check": "Chow first break p",
+      "actual": 0.060596285910162195,
+      "expected": 0.0606,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Chow second break F",
+      "actual": 6.959516843392155,
+      "expected": 6.96,
+      "precision_decimal_places": 2,
+      "passed": true
+    },
+    {
+      "check": "Chow second break p",
+      "actual": 0.0009849279132826405,
+      "expected": 0.001,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=1 coefficient",
+      "actual": -0.013857798438746611,
+      "expected": -0.014,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=1 p-value",
+      "actual": 0.7124134839282625,
+      "expected": 0.712,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=2 coefficient",
+      "actual": 0.014284540625816359,
+      "expected": 0.014,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=2 p-value",
+      "actual": 0.10326251774750468,
+      "expected": 0.103,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=3 coefficient",
+      "actual": 0.0026400873811776846,
+      "expected": 0.003,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=3 p-value",
+      "actual": 0.38875012417759325,
+      "expected": 0.389,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=5 coefficient",
+      "actual": 0.007558604439374335,
+      "expected": 0.008,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=5 p-value",
+      "actual": 0.07423062927884667,
+      "expected": 0.074,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=7 coefficient",
+      "actual": 0.025362450206470363,
+      "expected": 0.025,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=10 coefficient",
+      "actual": 0.02081226451682174,
+      "expected": 0.021,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=10 p-value",
+      "actual": 0.1719824961486911,
+      "expected": 0.172,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=15 coefficient",
+      "actual": -0.0060793914319847075,
+      "expected": -0.006,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=15 p-value",
+      "actual": 0.4921141431306022,
+      "expected": 0.492,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=20 coefficient",
+      "actual": -0.0005374217201970121,
+      "expected": -0.001,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=20 p-value",
+      "actual": 0.9775721162568404,
+      "expected": 0.978,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=30 coefficient",
+      "actual": -0.0024253351052266788,
+      "expected": -0.002,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=30 p-value",
+      "actual": 0.47591894158842885,
+      "expected": 0.476,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.3 h=7 p<0.001",
+      "actual": true,
+      "expected": true,
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T-1 coefficient",
+      "actual": -0.0,
+      "expected": 0,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T-1 p-value",
+      "actual": 0.0143,
+      "expected": 0.014,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+0 coefficient",
+      "actual": 0.0053,
+      "expected": 0.0053,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+0 p-value",
+      "actual": 0.7694,
+      "expected": 0.769,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+2 coefficient",
+      "actual": -0.0107,
+      "expected": -0.0107,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+2 p-value",
+      "actual": 0.6116,
+      "expected": 0.612,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+7 coefficient",
+      "actual": 0.0327,
+      "expected": 0.0327,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+7 p-value",
+      "actual": 0.0897,
+      "expected": 0.09,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+15 coefficient",
+      "actual": -0.0098,
+      "expected": -0.0098,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+15 p-value",
+      "actual": 0.669,
+      "expected": 0.669,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+18 coefficient",
+      "actual": 0.0256,
+      "expected": 0.0256,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+18 p-value",
+      "actual": 0.0329,
+      "expected": 0.033,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+20 coefficient",
+      "actual": 0.0018,
+      "expected": 0.0018,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.5 T+20 p-value",
+      "actual": 0.8744,
+      "expected": 0.874,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 5.6 h=3 path coefficient",
+      "actual": 0.0003046126356720266,
+      "expected": 0.0003,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 5.6 h=3 path p-value",
+      "actual": 0.03154024005135024,
+      "expected": 0.032,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger Curve ZIRP F",
+      "actual": 0.244,
+      "expected": 0.244,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger Curve Hike_Cycle F",
+      "actual": 3.952,
+      "expected": 3.952,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger Curve Plateau F",
+      "actual": 7.709,
+      "expected": 7.709,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger Lending ZIRP F",
+      "actual": 0.326,
+      "expected": 0.326,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger Lending Hike_Cycle F",
+      "actual": 5.629,
+      "expected": 5.629,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger Lending Plateau F",
+      "actual": 4.572,
+      "expected": 4.572,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger TVL ZIRP F",
+      "actual": 1.407,
+      "expected": 1.407,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger TVL Hike_Cycle F",
+      "actual": 1.463,
+      "expected": 1.463,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Granger TVL Plateau F",
+      "actual": 8.223,
+      "expected": 8.223,
+      "precision_decimal_places": 3,
+      "passed": true
+    },
+    {
+      "check": "Table 5.5 h=0 coefficient",
+      "actual": -0.03556851119904595,
+      "expected": -0.0356,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 5.5 h=0 p-value",
+      "actual": 0.01550864825621893,
+      "expected": 0.0155,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 5.5 h=2 coefficient",
+      "actual": -0.2080905965564826,
+      "expected": -0.2081,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 5.5 h=5 coefficient",
+      "actual": 0.08156155873048355,
+      "expected": 0.0816,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 5.5 h=5 p-value",
+      "actual": 0.022397238953103124,
+      "expected": 0.0224,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 5.5 h=13 coefficient",
+      "actual": 0.025756060333148017,
+      "expected": 0.0258,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 5.5 h=13 p-value",
+      "actual": 0.0012185035266734782,
+      "expected": 0.0012,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 5.5 h=14 coefficient",
+      "actual": 0.057736737745742076,
+      "expected": 0.0577,
+      "precision_decimal_places": 4,
+      "passed": true
+    },
+    {
+      "check": "Table 3.8 T+2 nominal",
+      "actual": -20.715586851511304,
+      "expected": -20.72,
+      "precision_decimal_places": 2,
+      "passed": true
+    },
+    {
+      "check": "Table 3.8 T+2 adjusted",
+      "actual": -32.72655399329426,
+      "expected": -32.73,
+      "precision_decimal_places": 2,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical data/aavegas.csv",
+      "actual": "bb245a4e5ce635ee1fddee3afd4405158bb641baad349f84afd58aacbd00be9c",
+      "expected": "bb245a4e5ce635ee1fddee3afd4405158bb641baad349f84afd58aacbd00be9c",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged TUTTO IL CODICE/TESI MASTER/3POOL/aavegas.csv",
+      "actual": "bb245a4e5ce635ee1fddee3afd4405158bb641baad349f84afd58aacbd00be9c",
+      "expected": "bb245a4e5ce635ee1fddee3afd4405158bb641baad349f84afd58aacbd00be9c",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical data/aavenew.csv",
+      "actual": "3a6feece7ad6cd987d2672e62150128a61c55d05bd8b24cb2e26631700716223",
+      "expected": "3a6feece7ad6cd987d2672e62150128a61c55d05bd8b24cb2e26631700716223",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged TUTTO IL CODICE/TESI MASTER/AAVE v2/aavenew.csv",
+      "actual": "3a6feece7ad6cd987d2672e62150128a61c55d05bd8b24cb2e26631700716223",
+      "expected": "3a6feece7ad6cd987d2672e62150128a61c55d05bd8b24cb2e26631700716223",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical data/aavebtc.csv",
+      "actual": "b1a1af1ae6dffb670bb8076e53432d036662c0e2b0b40a1a6c63391941019a19",
+      "expected": "b1a1af1ae6dffb670bb8076e53432d036662c0e2b0b40a1a6c63391941019a19",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged TUTTO IL CODICE/TESI MASTER/AAVE v2/aavebtc.csv",
+      "actual": "b1a1af1ae6dffb670bb8076e53432d036662c0e2b0b40a1a6c63391941019a19",
+      "expected": "b1a1af1ae6dffb670bb8076e53432d036662c0e2b0b40a1a6c63391941019a19",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical data/aavetvl.csv",
+      "actual": "32f83662bf4bdcbfbd7ec8e5a7607f2e86cea2b61e0bf99a7fb3a2028ef71ab7",
+      "expected": "32f83662bf4bdcbfbd7ec8e5a7607f2e86cea2b61e0bf99a7fb3a2028ef71ab7",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged TUTTO IL CODICE/TESI MASTER/AAVE v2/vecchie e non immagini/aavetvl.csv",
+      "actual": "32f83662bf4bdcbfbd7ec8e5a7607f2e86cea2b61e0bf99a7fb3a2028ef71ab7",
+      "expected": "32f83662bf4bdcbfbd7ec8e5a7607f2e86cea2b61e0bf99a7fb3a2028ef71ab7",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical data/ABJ-2024.csv",
+      "actual": "0b4a99532c2502e055fdfcf9d12c65a8103392fd25de0f10d95afd11cfd28c1e",
+      "expected": "0b4a99532c2502e055fdfcf9d12c65a8103392fd25de0f10d95afd11cfd28c1e",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged TUTTO IL CODICE/TESI MASTER/AAVE v2/ABJ-2024.csv",
+      "actual": "0b4a99532c2502e055fdfcf9d12c65a8103392fd25de0f10d95afd11cfd28c1e",
+      "expected": "0b4a99532c2502e055fdfcf9d12c65a8103392fd25de0f10d95afd11cfd28c1e",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical data/btc_filtered.csv",
+      "actual": "771099f079a7443559464dd509a9c7c4ffea1b60f1fa3e2495f641c937fa7da1",
+      "expected": "771099f079a7443559464dd509a9c7c4ffea1b60f1fa3e2495f641c937fa7da1",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged TUTTO IL CODICE/TESI MASTER/AAVE v2/btc_filtered.csv",
+      "actual": "771099f079a7443559464dd509a9c7c4ffea1b60f1fa3e2495f641c937fa7da1",
+      "expected": "771099f079a7443559464dd509a9c7c4ffea1b60f1fa3e2495f641c937fa7da1",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical data/FEDFUNDS.csv",
+      "actual": "699b64fd1a42837efe65521379d1e8cb1fd407d792014e3baf90eaa341685eae",
+      "expected": "699b64fd1a42837efe65521379d1e8cb1fd407d792014e3baf90eaa341685eae",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged TUTTO IL CODICE/TESI MASTER/AAVE v2/FEDFUNDS.csv",
+      "actual": "699b64fd1a42837efe65521379d1e8cb1fd407d792014e3baf90eaa341685eae",
+      "expected": "699b64fd1a42837efe65521379d1e8cb1fd407d792014e3baf90eaa341685eae",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical thesis/Thesis Nova 2026 Luca Paul Beitone.pdf",
+      "actual": "752578a72a90bd4d7ad2450e5eddc63acd4bf9909de37ad4d8b7015eeb299dd0",
+      "expected": "752578a72a90bd4d7ad2450e5eddc63acd4bf9909de37ad4d8b7015eeb299dd0",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/Thesis Nova 2026 Luca Paul Beitone.pdf",
+      "actual": "752578a72a90bd4d7ad2450e5eddc63acd4bf9909de37ad4d8b7015eeb299dd0",
+      "expected": "752578a72a90bd4d7ad2450e5eddc63acd4bf9909de37ad4d8b7015eeb299dd0",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/comparazione.pdf",
+      "actual": "387bd54f0ef8f035970fe27a00aeaa38775eccc5d694bbc30a42eee7b6dc05b2",
+      "expected": "387bd54f0ef8f035970fe27a00aeaa38775eccc5d694bbc30a42eee7b6dc05b2",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/comparazione.pdf",
+      "actual": "387bd54f0ef8f035970fe27a00aeaa38775eccc5d694bbc30a42eee7b6dc05b2",
+      "expected": "387bd54f0ef8f035970fe27a00aeaa38775eccc5d694bbc30a42eee7b6dc05b2",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/correlazione.pdf",
+      "actual": "51cb619b4a56c098e0d96e817f4851962df55e97dd0da6a72cea05cabce6d277",
+      "expected": "51cb619b4a56c098e0d96e817f4851962df55e97dd0da6a72cea05cabce6d277",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/correlazione.pdf",
+      "actual": "51cb619b4a56c098e0d96e817f4851962df55e97dd0da6a72cea05cabce6d277",
+      "expected": "51cb619b4a56c098e0d96e817f4851962df55e97dd0da6a72cea05cabce6d277",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/ammcurves.pdf",
+      "actual": "8f39e32ca437e3c511ff60a29b2fb590f0a7c8e43fcb04c7f535122d965d0763",
+      "expected": "8f39e32ca437e3c511ff60a29b2fb590f0a7c8e43fcb04c7f535122d965d0763",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/ammcurves.pdf",
+      "actual": "8f39e32ca437e3c511ff60a29b2fb590f0a7c8e43fcb04c7f535122d965d0763",
+      "expected": "8f39e32ca437e3c511ff60a29b2fb590f0a7c8e43fcb04c7f535122d965d0763",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/event_study_surprises_3pool.png",
+      "actual": "3d10ed381139a9809e7f280461af1e72d02ac48d4c07b9b33a56b9007272f27b",
+      "expected": "3d10ed381139a9809e7f280461af1e72d02ac48d4c07b9b33a56b9007272f27b",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/event_study_surprises_3pool.png",
+      "actual": "3d10ed381139a9809e7f280461af1e72d02ac48d4c07b9b33a56b9007272f27b",
+      "expected": "3d10ed381139a9809e7f280461af1e72d02ac48d4c07b9b33a56b9007272f27b",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/local_projections_fomc_3pool.png",
+      "actual": "925ddc8486cb905eeb345f4264abcb081587bbb6e4204eea36ff5fdd5eec0892",
+      "expected": "925ddc8486cb905eeb345f4264abcb081587bbb6e4204eea36ff5fdd5eec0892",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/local_projections_fomc_3pool.png",
+      "actual": "925ddc8486cb905eeb345f4264abcb081587bbb6e4204eea36ff5fdd5eec0892",
+      "expected": "925ddc8486cb905eeb345f4264abcb081587bbb6e4204eea36ff5fdd5eec0892",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/local_projections_fomc_stable.png",
+      "actual": "2c9c6d03622f7107530bb12cf14833792897ca8c082b9d0f32fbbb9d50a04e7d",
+      "expected": "2c9c6d03622f7107530bb12cf14833792897ca8c082b9d0f32fbbb9d50a04e7d",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/local_projections_fomc_stable.png",
+      "actual": "2c9c6d03622f7107530bb12cf14833792897ca8c082b9d0f32fbbb9d50a04e7d",
+      "expected": "2c9c6d03622f7107530bb12cf14833792897ca8c082b9d0f32fbbb9d50a04e7d",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/tvl_interpretation_summary.png",
+      "actual": "17bf11a1fcd34f9ecf3b2f8828a7d17a8e6421ecf620cedc912ea1282ffa9fa8",
+      "expected": "17bf11a1fcd34f9ecf3b2f8828a7d17a8e6421ecf620cedc912ea1282ffa9fa8",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/tvl_interpretation_summary.png",
+      "actual": "17bf11a1fcd34f9ecf3b2f8828a7d17a8e6421ecf620cedc912ea1282ffa9fa8",
+      "expected": "17bf11a1fcd34f9ecf3b2f8828a7d17a8e6421ecf620cedc912ea1282ffa9fa8",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/tvl_price_adjustment_diagnostic.png",
+      "actual": "a211cb63b589e72b073c06fa2936905027b09b5387f1e2418744954df54d8e45",
+      "expected": "a211cb63b589e72b073c06fa2936905027b09b5387f1e2418744954df54d8e45",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/tvl_price_adjustment_diagnostic.png",
+      "actual": "a211cb63b589e72b073c06fa2936905027b09b5387f1e2418744954df54d8e45",
+      "expected": "a211cb63b589e72b073c06fa2936905027b09b5387f1e2418744954df54d8e45",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/tvl_ratio_analysis.png",
+      "actual": "5acb5dc7b92d545ec8fe45a9b1b694f0b61e3e2c148a60bb45665bf5840ad128",
+      "expected": "5acb5dc7b92d545ec8fe45a9b1b694f0b61e3e2c148a60bb45665bf5840ad128",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/tvl_ratio_analysis.png",
+      "actual": "5acb5dc7b92d545ec8fe45a9b1b694f0b61e3e2c148a60bb45665bf5840ad128",
+      "expected": "5acb5dc7b92d545ec8fe45a9b1b694f0b61e3e2c148a60bb45665bf5840ad128",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical results/thesis_figures/tvl_placebo_both_measures.png",
+      "actual": "36e95601de84323b9b3a25acb0e13e4366bd342867e74d105cac8af51471e974",
+      "expected": "36e95601de84323b9b3a25acb0e13e4366bd342867e74d105cac8af51471e974",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original unchanged thesis (1)/images/tvl_placebo_both_measures.png",
+      "actual": "36e95601de84323b9b3a25acb0e13e4366bd342867e74d105cac8af51471e974",
+      "expected": "36e95601de84323b9b3a25acb0e13e4366bd342867e74d105cac8af51471e974",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/REGRESSIONDAUSARE.ipynb:5",
+      "actual": "d9b1c04a71df5cbde6f08a775cc492aabd673a4519c69eb987b9ecde38515c15",
+      "expected": "d9b1c04a71df5cbde6f08a775cc492aabd673a4519c69eb987b9ecde38515c15",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/01_yield_regressions.ipynb:5",
+      "actual": "f50ff81f65958062920593c8975d712dae035fdf7d51365a8ae66709eb4d4f71",
+      "expected": "f50ff81f65958062920593c8975d712dae035fdf7d51365a8ae66709eb4d4f71",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/REGRESSIONDAUSARE.ipynb:6",
+      "actual": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+      "expected": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/01_yield_regressions.ipynb:6",
+      "actual": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+      "expected": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/REGRESSIONDAUSARE.ipynb:1",
+      "actual": "252de2d38f65ddfede494f399582b939cc946c9536fbd61a1c13da120f9328a7",
+      "expected": "252de2d38f65ddfede494f399582b939cc946c9536fbd61a1c13da120f9328a7",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/01_yield_regressions.ipynb:1",
+      "actual": "f3dcaaaa3dcffdf3fede3b9c15644c88a526ddab0ea8f9c3f8e961550b398a26",
+      "expected": "f3dcaaaa3dcffdf3fede3b9c15644c88a526ddab0ea8f9c3f8e961550b398a26",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/REGRESSIONDAUSARE.ipynb:3",
+      "actual": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+      "expected": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/01_yield_regressions.ipynb:3",
+      "actual": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+      "expected": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/chow test.ipynb:0",
+      "actual": "94e00a3ce13afcd64f8ce170b8047eb58a25cebcf2705a0fd35eb75617c0b8f2",
+      "expected": "94e00a3ce13afcd64f8ce170b8047eb58a25cebcf2705a0fd35eb75617c0b8f2",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/02_structural_breaks.ipynb:0",
+      "actual": "f9ee42a54f9f8e6dcfed281674a64a50e18a9fefed52457c892c21a498230a33",
+      "expected": "f9ee42a54f9f8e6dcfed281674a64a50e18a9fefed52457c892c21a498230a33",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/LOCAL PROJECTIONS FINALE.ipynb:1",
+      "actual": "bc6e658c3ce56d7cc3035fad8fade4eb70aed4474d5a8e6726525ebda3119081",
+      "expected": "bc6e658c3ce56d7cc3035fad8fade4eb70aed4474d5a8e6726525ebda3119081",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/03_curve_local_projections.ipynb:1",
+      "actual": "7381cc9a09ae2c905da4ba8734c67843139638a5e6865a66c83a7273ef7fd471",
+      "expected": "7381cc9a09ae2c905da4ba8734c67843139638a5e6865a66c83a7273ef7fd471",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/LOCAL PROJECTIONS FINALE.ipynb:2",
+      "actual": "c787910f23a5222334af8ef5a66006ec27d0e7f11abc67a2fb3bbaa46685b4fc",
+      "expected": "c787910f23a5222334af8ef5a66006ec27d0e7f11abc67a2fb3bbaa46685b4fc",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/03_curve_local_projections.ipynb:2",
+      "actual": "442b9341ed1c411e24413a5568665b74932358f60cf17238c5fee9f1f3d9cf7b",
+      "expected": "442b9341ed1c411e24413a5568665b74932358f60cf17238c5fee9f1f3d9cf7b",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/event(future2y_stable coin).ipynb:4",
+      "actual": "32cfe5219db828fd509b47badfd26e34f50fb5c841e275cb06a6e593369b6643",
+      "expected": "32cfe5219db828fd509b47badfd26e34f50fb5c841e275cb06a6e593369b6643",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/04_lending_event_study.ipynb:4",
+      "actual": "9fca3bbb618da77e8db95c450439995bbfd6a0af44611dea1792c52d4c748ea8",
+      "expected": "9fca3bbb618da77e8db95c450439995bbfd6a0af44611dea1792c52d4c748ea8",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/gss eevnt.ipynb:2",
+      "actual": "a49f1f9bbe117b5ba56a3c46116fc4cbda16f2c896d15e91bea050c56b7e5626",
+      "expected": "a49f1f9bbe117b5ba56a3c46116fc4cbda16f2c896d15e91bea050c56b7e5626",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/05_lending_local_projections_and_surprises.ipynb:2",
+      "actual": "818d70333f6b636fe6eb53cbc09def4097d9690e0084a4e4f6d779ca989efcce",
+      "expected": "818d70333f6b636fe6eb53cbc09def4097d9690e0084a4e4f6d779ca989efcce",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/granger stablecoin CLAUDE.ipynb:8",
+      "actual": "74c255cbc6755192dfe2e8d040b36d1ca263433d2ac673f6446550ff09d0280a",
+      "expected": "74c255cbc6755192dfe2e8d040b36d1ca263433d2ac673f6446550ff09d0280a",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/06_granger_by_regime.ipynb:8",
+      "actual": "35ba6cd41a83644f869430cda0152bd22bd02f1064f5122bfe2e89fe3bf39573",
+      "expected": "35ba6cd41a83644f869430cda0152bd22bd02f1064f5122bfe2e89fe3bf39573",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/granger stablecoin CLAUDE.ipynb:1",
+      "actual": "072a43d9bdeb8543ad43cf5f9b1eca2f65f6000ce29f9826094363ae6bf8c2b8",
+      "expected": "072a43d9bdeb8543ad43cf5f9b1eca2f65f6000ce29f9826094363ae6bf8c2b8",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/06_granger_by_regime.ipynb:1",
+      "actual": "6ceb4d75424c9bf95e7a5c8357d72aca2542bfdde301555dcb62dab141d2ee44",
+      "expected": "6ceb4d75424c9bf95e7a5c8357d72aca2542bfdde301555dcb62dab141d2ee44",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/granger stablecoin CLAUDE.ipynb:5",
+      "actual": "20a406836ecb88fd47b1a447c0ee5496495ce9bb3b70ba6284d98895940a3f66",
+      "expected": "20a406836ecb88fd47b1a447c0ee5496495ce9bb3b70ba6284d98895940a3f66",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/06_granger_by_regime.ipynb:5",
+      "actual": "23a42732c252defa712676208869699010f65361be34975900a53dc2bafbe2b6",
+      "expected": "23a42732c252defa712676208869699010f65361be34975900a53dc2bafbe2b6",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/TVL DELLA TESI CON SENSITIVITA.ipynb:4",
+      "actual": "399fba9a6a851a0c3f24f848ec030ecad94baa63712efe890c53b7117a730663",
+      "expected": "399fba9a6a851a0c3f24f848ec030ecad94baa63712efe890c53b7117a730663",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/07_tvl_event_study.ipynb:4",
+      "actual": "a812d9ba2cbe62c7a570a1d827223880b1ae7293145a5843ff96dfd0d6da8660",
+      "expected": "a812d9ba2cbe62c7a570a1d827223880b1ae7293145a5843ff96dfd0d6da8660",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/Tvl  CLAUDE.ipynb:4",
+      "actual": "636beb6526666f2b0ff3d7ad56a10d5b4e96563166a4ffa1734015977e8ce05f",
+      "expected": "636beb6526666f2b0ff3d7ad56a10d5b4e96563166a4ffa1734015977e8ce05f",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/08_tvl_price_adjustment_and_placebo.ipynb:4",
+      "actual": "c435baf8c857faa3e99c0d424b40a84ae1b64ff3e31963bbfc613423d3159c4e",
+      "expected": "c435baf8c857faa3e99c0d424b40a84ae1b64ff3e31963bbfc613423d3159c4e",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/Tvl  CLAUDE.ipynb:5",
+      "actual": "afa7c94fd704f203ea7cac1f966c9767ee78b0aceec503c4190744aa37561f68",
+      "expected": "afa7c94fd704f203ea7cac1f966c9767ee78b0aceec503c4190744aa37561f68",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/08_tvl_price_adjustment_and_placebo.ipynb:5",
+      "actual": "afa7c94fd704f203ea7cac1f966c9767ee78b0aceec503c4190744aa37561f68",
+      "expected": "afa7c94fd704f203ea7cac1f966c9767ee78b0aceec503c4190744aa37561f68",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Original cell preserved: TUTTO IL CODICE/TESI MASTER/AAVE v2/Tvl  CLAUDE.ipynb:6",
+      "actual": "d280c6d471e525c217945c38d0152773cae7301c7c5eb1486a706c333e597151",
+      "expected": "d280c6d471e525c217945c38d0152773cae7301c7c5eb1486a706c333e597151",
+      "precision_decimal_places": null,
+      "passed": true
+    },
+    {
+      "check": "Packaged source provenance: notebooks/08_tvl_price_adjustment_and_placebo.ipynb:6",
+      "actual": "d280c6d471e525c217945c38d0152773cae7301c7c5eb1486a706c333e597151",
+      "expected": "d280c6d471e525c217945c38d0152773cae7301c7c5eb1486a706c333e597151",
+      "precision_decimal_places": null,
+      "passed": true
+    }
+  ],
+  "passed": 136,
+  "total": 136,
+  "monte_carlo_note": "Historical random seed unrecorded; stochastic p-values not checked for exact equality."
+}

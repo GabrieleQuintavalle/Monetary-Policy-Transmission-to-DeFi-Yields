@@ -1,0 +1,493 @@
+<original notebook execution>:274: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv('aavebtc.csv', parse_dates=['date'], index_col='date')
+/opt/anaconda3/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: No frequency information was provided, so inferred frequency D will be used.
+  self._init_dates(dates, freq)
+
+
+============================================================
+  PREPROCESSING: PRICE-ADJUSTED TVL
+============================================================
+✓ Price adjustment completed
+
+
+================================================================================
+  REGIME: ZIRP (2020-09-01 to 2022-01-31)
+================================================================================
+✓ Sample size: 395 observations
+
+
+============================================================
+  VAR ANALYSIS: TVL_ZIRP
+============================================================
+
+Sample period: 2021-01-02 00:00:00 to 2022-01-31 00:00:00
+Observations: 395
+
+============================================================
+STATIONARITY CHECKS (for information only)
+============================================================
+
+- Stationarity Test for 'tvl_adj%':
+  ADF Statistic: -8.0688
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for '3m ir':
+  ADF Statistic: -6.3945
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'gas_fees':
+  ADF Statistic: -5.7158
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'ethperpetual':
+  ADF Statistic: -10.4848
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'VIX':
+  ADF Statistic: -9.8050
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'volatility_btc':
+  ADF Statistic: -4.1884
+  p-value: 0.0007
+  Conclusion: Stationary
+
+============================================================
+VAR SPECIFICATION DECISION
+============================================================
+
+✓ Using LEVELS for VAR estimation
+  Following: Sims, Stock & Watson (1990)
+  Rationale: Focus on dynamic relationships (Granger causality)
+            not structural identification.
+  Note: Including lags ensures residuals are stationary,
+        avoiding spurious regression issues.
+
+============================================================
+  VAR MODEL ESTIMATION
+============================================================
+
+✓ VAR model fitted successfully
+  Optimal lag order (AIC): 5
+  Data type: levels (Sims et al. 1990)
+
+============================================================
+  GRANGER CAUSALITY TESTS
+============================================================
+
+Target (caused): tvl_adj%
+Testing causality from: ['3m ir', 'gas_fees', 'ethperpetual', 'VIX', 'volatility_btc']
+
+--- Testing: 3m ir → tvl_adj% ---
+Granger causality F-test. H_0: 3m ir does not Granger-cause tvl_adj%. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         1.407          2.218   0.219 (5, 2154)
+-----------------------------------------------
+
+--- Testing: gas_fees → tvl_adj% ---
+Granger causality F-test. H_0: gas_fees does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         4.265          2.218   0.001 (5, 2154)
+-----------------------------------------------
+
+--- Testing: ethperpetual → tvl_adj% ---
+Granger causality F-test. H_0: ethperpetual does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         12.98          2.218   0.000 (5, 2154)
+-----------------------------------------------
+
+--- Testing: VIX → tvl_adj% ---
+Granger causality F-test. H_0: VIX does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         2.355          2.218   0.038 (5, 2154)
+-----------------------------------------------
+
+--- Testing: volatility_btc → tvl_adj% ---
+Granger causality F-test. H_0: volatility_btc does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         8.148          2.218   0.000 (5, 2154)
+-----------------------------------------------
+
+============================================================
+  REVERSE CAUSALITY TEST (Critical for Thesis!)
+============================================================
+
+--- Testing REVERSE: tvl_adj% → 3m ir ---
+Granger causality F-test. H_0: tvl_adj% does not Granger-cause 3m ir. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+        0.3282          2.218   0.896 (5, 2154)
+-----------------------------------------------
+
+✓ FINDING: No reverse causality (p=0.8962)
+  → DeFi is a 'price taker' from TradFi ✓
+
+============================================================
+  GRANGER CAUSALITY SUMMARY TABLE
+============================================================
++---------------------------+----------+-----------+----------+
+| Causing → Caused          |   F-stat |   p-value | Result   |
++===========================+==========+===========+==========+
+| 3m ir → tvl_adj%          |    1.407 |    0.2186 | No       |
++---------------------------+----------+-----------+----------+
+| gas_fees → tvl_adj%       |    4.265 |    0.0007 | ***      |
++---------------------------+----------+-----------+----------+
+| ethperpetual → tvl_adj%   |   12.978 |    0      | ***      |
++---------------------------+----------+-----------+----------+
+| VIX → tvl_adj%            |    2.355 |    0.0384 | **       |
++---------------------------+----------+-----------+----------+
+| volatility_btc → tvl_adj% |    8.148 |    0      | ***      |
++---------------------------+----------+-----------+----------+
+| tvl_adj% → 3m ir          |    0.328 |    0.8962 | No       |
++---------------------------+----------+-----------+----------+
+
+✓ Saved LaTeX table: granger_TVL_ZIRP.tex
+
+============================================================
+  IMPULSE RESPONSE FUNCTIONS
+============================================================
+✓ Saved clean IRF plot: irf_tvl_adj%_to_3m ir_TVL_ZIRP_clean.png
+
+<Figure size 600x400 with 1 Axes>
+
+
+================================================================================
+  REGIME: Hike_Cycle (2022-03-01 to 2023-06-30)
+================================================================================
+✓ Sample size: 487 observations
+
+
+============================================================
+  VAR ANALYSIS: TVL_Hike_Cycle
+============================================================
+
+Sample period: 2022-03-01 00:00:00 to 2023-06-30 00:00:00
+Observations: 487
+
+============================================================
+STATIONARITY CHECKS (for information only)
+============================================================
+
+- Stationarity Test for 'tvl_adj%':
+  ADF Statistic: -8.9074
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for '3m ir':
+  ADF Statistic: -2.1331
+  p-value: 0.2314
+  Conclusion: Non-stationary (unit root)
+
+- Stationarity Test for 'gas_fees':
+  ADF Statistic: -7.7943
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'ethperpetual':
+  ADF Statistic: -6.5279
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'VIX':
+  ADF Statistic: -8.3724
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'volatility_btc':
+  ADF Statistic: -3.5691
+  p-value: 0.0064
+  Conclusion: Stationary
+
+============================================================
+VAR SPECIFICATION DECISION
+============================================================
+
+✓ Using LEVELS for VAR estimation
+  Following: Sims, Stock & Watson (1990)
+  Rationale: Focus on dynamic relationships (Granger causality)
+            not structural identification.
+  Note: Including lags ensures residuals are stationary,
+        avoiding spurious regression issues.
+
+  Mixed integration detected: ['3m ir'] appear I(1)
+  This is acceptable for Granger causality testing in levels.
+
+============================================================
+  VAR MODEL ESTIMATION
+============================================================
+
+✓ VAR model fitted successfully
+  Optimal lag order (AIC): 5
+  Data type: levels (Sims et al. 1990)
+
+============================================================
+  GRANGER CAUSALITY TESTS
+============================================================
+
+Target (caused): tvl_adj%
+Testing causality from: ['3m ir', 'gas_fees', 'ethperpetual', 'VIX', 'volatility_btc']
+
+--- Testing: 3m ir → tvl_adj% ---
+Granger causality F-test. H_0: 3m ir does not Granger-cause tvl_adj%. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         1.463          2.217   0.199 (5, 2706)
+-----------------------------------------------
+
+--- Testing: gas_fees → tvl_adj% ---
+Granger causality F-test. H_0: gas_fees does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         4.838          2.217   0.000 (5, 2706)
+-----------------------------------------------
+
+--- Testing: ethperpetual → tvl_adj% ---
+Granger causality F-test. H_0: ethperpetual does not Granger-cause tvl_adj%. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+        0.9862          2.217   0.425 (5, 2706)
+-----------------------------------------------
+
+--- Testing: VIX → tvl_adj% ---
+Granger causality F-test. H_0: VIX does not Granger-cause tvl_adj%. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+        0.3897          2.217   0.856 (5, 2706)
+-----------------------------------------------
+
+--- Testing: volatility_btc → tvl_adj% ---
+Granger causality F-test. H_0: volatility_btc does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         6.951          2.217   0.000 (5, 2706)
+-----------------------------------------------
+
+============================================================
+  REVERSE CAUSALITY TEST (Critical for Thesis!)
+============================================================
+
+--- Testing REVERSE: tvl_adj% → 3m ir ---
+Granger causality F-test. H_0: tvl_adj% does not Granger-cause 3m ir. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         10.79          2.217   0.000 (5, 2706)
+-----------------------------------------------
+
+⚠ WARNING: Reverse causality detected (p=0.0000)
+
+============================================================
+  GRANGER CAUSALITY SUMMARY TABLE
+============================================================
++---------------------------+----------+-----------+----------+
+| Causing → Caused          |   F-stat |   p-value | Result   |
++===========================+==========+===========+==========+
+| 3m ir → tvl_adj%          |    1.463 |    0.1988 | No       |
++---------------------------+----------+-----------+----------+
+| gas_fees → tvl_adj%       |    4.838 |    0.0002 | ***      |
++---------------------------+----------+-----------+----------+
+| ethperpetual → tvl_adj%   |    0.986 |    0.4246 | No       |
++---------------------------+----------+-----------+----------+
+| VIX → tvl_adj%            |    0.39  |    0.8562 | No       |
++---------------------------+----------+-----------+----------+
+| volatility_btc → tvl_adj% |    6.951 |    0      | ***      |
++---------------------------+----------+-----------+----------+
+| tvl_adj% → 3m ir          |   10.79  |    0      | ***      |
++---------------------------+----------+-----------+----------+
+
+✓ Saved LaTeX table: granger_TVL_Hike_Cycle.tex
+
+============================================================
+  IMPULSE RESPONSE FUNCTIONS
+============================================================
+
+/opt/anaconda3/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: No frequency information was provided, so inferred frequency D will be used.
+  self._init_dates(dates, freq)
+
+✓ Saved clean IRF plot: irf_tvl_adj%_to_3m ir_TVL_Hike_Cycle_clean.png
+
+<Figure size 600x400 with 1 Axes>
+
+
+================================================================================
+  REGIME: Plateau (2023-08-01 to 2025-09-11)
+================================================================================
+✓ Sample size: 747 observations
+
+
+============================================================
+  VAR ANALYSIS: TVL_Plateau
+============================================================
+
+Sample period: 2023-08-01 00:00:00 to 2025-09-09 00:00:00
+Observations: 747
+
+============================================================
+STATIONARITY CHECKS (for information only)
+============================================================
+
+- Stationarity Test for 'tvl_adj%':
+  ADF Statistic: -12.1336
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for '3m ir':
+  ADF Statistic: -2.0854
+  p-value: 0.2504
+  Conclusion: Non-stationary (unit root)
+
+- Stationarity Test for 'gas_fees':
+  ADF Statistic: -3.4032
+  p-value: 0.0109
+  Conclusion: Stationary
+
+- Stationarity Test for 'ethperpetual':
+  ADF Statistic: -4.2552
+  p-value: 0.0005
+  Conclusion: Stationary
+
+- Stationarity Test for 'VIX':
+  ADF Statistic: -20.4471
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'volatility_btc':
+  ADF Statistic: -4.2733
+  p-value: 0.0005
+  Conclusion: Stationary
+
+============================================================
+VAR SPECIFICATION DECISION
+============================================================
+
+✓ Using LEVELS for VAR estimation
+  Following: Sims, Stock & Watson (1990)
+  Rationale: Focus on dynamic relationships (Granger causality)
+            not structural identification.
+  Note: Including lags ensures residuals are stationary,
+        avoiding spurious regression issues.
+
+  Mixed integration detected: ['3m ir'] appear I(1)
+  This is acceptable for Granger causality testing in levels.
+
+============================================================
+  VAR MODEL ESTIMATION
+============================================================
+
+✓ VAR model fitted successfully
+  Optimal lag order (AIC): 5
+  Data type: levels (Sims et al. 1990)
+
+============================================================
+  GRANGER CAUSALITY TESTS
+============================================================
+
+Target (caused): tvl_adj%
+Testing causality from: ['3m ir', 'gas_fees', 'ethperpetual', 'VIX', 'volatility_btc']
+
+--- Testing: 3m ir → tvl_adj% ---
+Granger causality F-test. H_0: 3m ir does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         8.223          2.216   0.000 (5, 4266)
+-----------------------------------------------
+
+--- Testing: gas_fees → tvl_adj% ---
+Granger causality F-test. H_0: gas_fees does not Granger-cause tvl_adj%. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         1.001          2.216   0.415 (5, 4266)
+-----------------------------------------------
+
+--- Testing: ethperpetual → tvl_adj% ---
+Granger causality F-test. H_0: ethperpetual does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         5.600          2.216   0.000 (5, 4266)
+-----------------------------------------------
+
+--- Testing: VIX → tvl_adj% ---
+Granger causality F-test. H_0: VIX does not Granger-cause tvl_adj%. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+        0.9557          2.216   0.444 (5, 4266)
+-----------------------------------------------
+
+--- Testing: volatility_btc → tvl_adj% ---
+Granger causality F-test. H_0: volatility_btc does not Granger-cause tvl_adj%. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         2.881          2.216   0.013 (5, 4266)
+-----------------------------------------------
+
+============================================================
+  REVERSE CAUSALITY TEST (Critical for Thesis!)
+============================================================
+
+--- Testing REVERSE: tvl_adj% → 3m ir ---
+Granger causality F-test. H_0: tvl_adj% does not Granger-cause 3m ir. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         9.681          2.216   0.000 (5, 4266)
+-----------------------------------------------
+
+⚠ WARNING: Reverse causality detected (p=0.0000)
+
+============================================================
+  GRANGER CAUSALITY SUMMARY TABLE
+============================================================
++---------------------------+----------+-----------+----------+
+| Causing → Caused          |   F-stat |   p-value | Result   |
++===========================+==========+===========+==========+
+| 3m ir → tvl_adj%          |    8.223 |    0      | ***      |
++---------------------------+----------+-----------+----------+
+| gas_fees → tvl_adj%       |    1.001 |    0.4152 | No       |
++---------------------------+----------+-----------+----------+
+| ethperpetual → tvl_adj%   |    5.6   |    0      | ***      |
++---------------------------+----------+-----------+----------+
+| VIX → tvl_adj%            |    0.956 |    0.4436 | No       |
++---------------------------+----------+-----------+----------+
+| volatility_btc → tvl_adj% |    2.881 |    0.0133 | **       |
++---------------------------+----------+-----------+----------+
+| tvl_adj% → 3m ir          |    9.681 |    0      | ***      |
++---------------------------+----------+-----------+----------+
+
+✓ Saved LaTeX table: granger_TVL_Plateau.tex
+
+============================================================
+  IMPULSE RESPONSE FUNCTIONS
+============================================================
+
+/opt/anaconda3/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+  self._init_dates(dates, freq)
+
+✓ Saved clean IRF plot: irf_tvl_adj%_to_3m ir_TVL_Plateau_clean.png
+
+<Figure size 600x400 with 1 Axes>

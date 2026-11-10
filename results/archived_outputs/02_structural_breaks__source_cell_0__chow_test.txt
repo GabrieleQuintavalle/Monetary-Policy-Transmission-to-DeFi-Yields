@@ -1,0 +1,16 @@
+============================================================
+CHOW TEST - Break at February 2022 (End of ZIRP)
+============================================================
+F-statistic: 2.81
+p-value: 0.0606
+Significant at 5%: NO ✗
+
+============================================================
+CHOW TEST - Break at August 2023 (Start of Plateau)
+============================================================
+F-statistic: 6.96
+p-value: 0.0010
+Significant at 5%: YES ✓
+
+<original notebook execution>:7: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv("aavebtc.csv", parse_dates=["date"], dayfirst=True)

@@ -1,0 +1,327 @@
+{
+  "purpose": "Selected code supporting the submitted thesis; original research choices retained.",
+  "data_note": "The input CSVs listed under 'files' are not distributed in this repository (third-party sources with unclear redistribution terms). Their SHA-256 checksums are kept for verification purposes only.",
+  "created_date": "2026-11-06",
+  "notebooks": [
+    {
+      "file": "notebooks/01_yield_regressions.ipynb",
+      "title": "Yield regressions and VIF",
+      "selections": [
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/REGRESSIONDAUSARE.ipynb",
+          "cell_index_zero_based": 5,
+          "original_source_sha256": "d9b1c04a71df5cbde6f08a775cc492aabd673a4519c69eb987b9ecde38515c15",
+          "packaged_source_sha256": "f50ff81f65958062920593c8975d712dae035fdf7d51365a8ae66709eb4d4f71",
+          "changes": "Original calculations retained. CSV paths now point to the bundled data.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -4,8 +4,8 @@\n \n # --- 1. CONFIGURAZIONE E CARICAMENTO DATI ---\n \n-main_data_filename = 'aavegas.csv'\n-btc_data_filename =  'btc_filtered.csv'\n+main_data_filename = str(_DATA_DIR / 'aavegas.csv')\n+btc_data_filename =  str(_DATA_DIR / 'btc_filtered.csv')\n date_col = 'date'\n dependent_var = '3pool'\n \n",
+          "archived_output": "results/archived_outputs/01_yield_regressions__source_cell_5__REGRESSIONDAUSARE.txt"
+        },
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/REGRESSIONDAUSARE.ipynb",
+          "cell_index_zero_based": 6,
+          "original_source_sha256": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+          "packaged_source_sha256": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+          "changes": "Original calculation; depends on the preceding regression cell.",
+          "diff": "",
+          "archived_output": "results/archived_outputs/01_yield_regressions__source_cell_6__REGRESSIONDAUSARE.txt"
+        },
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/REGRESSIONDAUSARE.ipynb",
+          "cell_index_zero_based": 1,
+          "original_source_sha256": "252de2d38f65ddfede494f399582b939cc946c9536fbd61a1c13da120f9328a7",
+          "packaged_source_sha256": "f3dcaaaa3dcffdf3fede3b9c15644c88a526ddab0ea8f9c3f8e961550b398a26",
+          "changes": "The saved source uses future 2y, while the submitted Table 3.6 uses 3m ir. Only that benchmark setting is restored. All coefficients, z statistics, adjusted R-squared, and N=1,715 reproduce the submitted table at its printed precision. This is a recovered configuration, not an untouched historical cell. The saved output in archived_outputs belongs to the future-2y variant.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -4,14 +4,14 @@\n \n # --- 1. CONFIGURAZIONE E CARICAMENTO DATI ---\n \n-main_data_filename = 'aavegas.csv'\n-btc_data_filename =  'btc_filtered.csv'\n+main_data_filename = str(_DATA_DIR / 'aavegas.csv')\n+btc_data_filename =  str(_DATA_DIR / 'btc_filtered.csv')\n date_col = 'date'\n dependent_var = 'stablecoin'\n \n # Definiamo le variabili per i due modelli\n-vars_parsimonious = ['future 2y']    \n-vars_full = ['future 2y', 'ethperpetual', 'gas_fees', 'VIX', 'btc_return', 'volatility_btc']# ---------------------------------------------------\n+vars_parsimonious = ['3m ir']    \n+vars_full = ['3m ir', 'ethperpetual', 'gas_fees', 'VIX', 'btc_return', 'volatility_btc']# ---------------------------------------------------\n \n try:\n     # Carica il DataFrame principale\n",
+          "archived_output": "results/archived_outputs/01_yield_regressions__source_cell_1__REGRESSIONDAUSARE.txt"
+        },
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/REGRESSIONDAUSARE.ipynb",
+          "cell_index_zero_based": 3,
+          "original_source_sha256": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+          "packaged_source_sha256": "af645cc1fcc9fe78b6c126f69cf8c37e4b7c87b61d2871aa51f4da185e24af81",
+          "changes": "Original VIF calculation, run after the restored lending regression. The archived Table 5.4 uses future 2y (VIF 1.004); the current calculation correctly reports the restored benchmark. Both source/output versions are described in CODE_MAP.md.",
+          "diff": "",
+          "archived_output": "results/archived_outputs/01_yield_regressions__source_cell_3__REGRESSIONDAUSARE.txt"
+        }
+      ]
+    },
+    {
+      "file": "notebooks/02_structural_breaks.ipynb",
+      "title": "Structural break tests",
+      "selections": [
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/chow test.ipynb",
+          "cell_index_zero_based": 0,
+          "original_source_sha256": "94e00a3ce13afcd64f8ce170b8047eb58a25cebcf2705a0fd35eb75617c0b8f2",
+          "packaged_source_sha256": "f9ee42a54f9f8e6dcfed281674a64a50e18a9fefed52457c892c21a498230a33",
+          "changes": "Original break dates, OLS specification, and testing calculation retained; paths only changed.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -4,7 +4,7 @@\n from scipy import stats\n \n # Assumo tu abbia già:\n-df = pd.read_csv(\"aavebtc.csv\", parse_dates=[\"date\"], dayfirst=True)\n+df = pd.read_csv(str(_DATA_DIR / 'aavebtc.csv'), parse_dates=[\"date\"], dayfirst=True)\n # 1. Definisci breakpoints\n break1 = '2022-02-01'  # Fine ZIRP\n break2 = '2023-08-01'  # Inizio Plateau\n",
+          "archived_output": "results/archived_outputs/02_structural_breaks__source_cell_0__chow_test.txt"
+        }
+      ]
+    },
+    {
+      "file": "notebooks/03_curve_local_projections.ipynb",
+      "title": "Curve local projections and controls comparison",
+      "selections": [
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/LOCAL PROJECTIONS FINALE.ipynb",
+          "cell_index_zero_based": 1,
+          "original_source_sha256": "bc6e658c3ce56d7cc3035fad8fade4eb70aed4474d5a8e6726525ebda3119081",
+          "packaged_source_sha256": "7381cc9a09ae2c905da4ba8734c67843139638a5e6865a66c83a7273ef7fd471",
+          "changes": "Original sample selection, horizon definitions, outlier rule, controls, and HAC settings retained.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -7,8 +7,8 @@\n # ============================================================================\n # CARICA DATI\n # ============================================================================\n-df_full = pd.read_csv('aavenew.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n-df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n+df_full = pd.read_csv(str(_DATA_DIR / 'aavenew.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n+df_surprises = pd.read_csv(str(_DATA_DIR / 'ABJ-2024.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n \n # Variabili\n dependent = '3pool'\n",
+          "archived_output": "results/archived_outputs/03_curve_local_projections__source_cell_1__LOCAL_PROJECTIONS_FINALE.txt"
+        },
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/LOCAL PROJECTIONS FINALE.ipynb",
+          "cell_index_zero_based": 2,
+          "original_source_sha256": "c787910f23a5222334af8ef5a66006ec27d0e7f11abc67a2fb3bbaa46685b4fc",
+          "packaged_source_sha256": "442b9341ed1c411e24413a5568665b74932358f60cf17238c5fee9f1f3d9cf7b",
+          "changes": "Original comparison calculation retained. The submitted figure is preserved separately in thesis_figures.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -7,8 +7,8 @@\n # ============================================================================\n # CARICA DATI\n # ============================================================================\n-df_full = pd.read_csv('aavenew.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n-df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n+df_full = pd.read_csv(str(_DATA_DIR / 'aavenew.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n+df_surprises = pd.read_csv(str(_DATA_DIR / 'ABJ-2024.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n \n dependent = '3pool'\n shock_var = '3m ir'\n",
+          "archived_output": "results/archived_outputs/03_curve_local_projections__source_cell_2__LOCAL_PROJECTIONS_FINALE.txt"
+        }
+      ]
+    },
+    {
+      "file": "notebooks/04_lending_event_study.ipynb",
+      "title": "Lending pass-through event study",
+      "selections": [
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/event(future2y_stable coin).ipynb",
+          "cell_index_zero_based": 4,
+          "original_source_sha256": "32cfe5219db828fd509b47badfd26e34f50fb5c841e275cb06a6e593369b6643",
+          "packaged_source_sha256": "9fca3bbb618da77e8db95c450439995bbfd6a0af44611dea1792c52d4c748ea8",
+          "changes": "Original event-study function and calls retained. Added the imports and data loading that previously lived in cell 2; aavecm.csv is byte-identical to the bundled aavegas.csv. The stored lending output matches Table 3.5. The Curve comparison output is retained because it is part of the same source cell, but is not presented as a match for Table 3.2.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -1,3 +1,11 @@\n+import pandas as pd\n+import numpy as np\n+import statsmodels.api as sm\n+import matplotlib.pyplot as plt\n+from tabulate import tabulate\n+df_main = pd.read_csv(str(_DATA_DIR / 'aavegas.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n+df_surprises_main = pd.read_csv(str(_DATA_DIR / 'ABJ-2024.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n+\n def run_event_study_total_change(df_returns, df_surprises, asset_column_name, asset_label, risk_free_col='3m ir'):\n     \"\"\"\n     Esegue un event study testando la reazione alla variazione CUMULATA del tasso risk-free,\n",
+          "archived_output": "results/archived_outputs/04_lending_event_study__source_cell_4__event(future2y_stable_coin).txt"
+        }
+      ]
+    },
+    {
+      "file": "notebooks/05_lending_local_projections_and_surprises.ipynb",
+      "title": "Lending local projections and monetary surprises",
+      "selections": [
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/gss eevnt.ipynb",
+          "cell_index_zero_based": 2,
+          "original_source_sha256": "a49f1f9bbe117b5ba56a3c46116fc4cbda16f2c896d15e91bea050c56b7e5626",
+          "packaged_source_sha256": "818d70333f6b636fe6eb53cbc09def4097d9690e0084a4e4f6d779ca989efcce",
+          "changes": "Original calculation retained. The source includes the local projection plot and the surprise regressions that reproduce the appendix table. Paths only changed.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -7,8 +7,8 @@\n # ============================================================================\n # CARICA DATI\n # ============================================================================\n-df_full = pd.read_csv('aavebtc.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n-df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n+df_full = pd.read_csv(str(_DATA_DIR / 'aavebtc.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n+df_surprises = pd.read_csv(str(_DATA_DIR / 'ABJ-2024.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n \n # Variabili\n dependent = 'stablecoin'  # Cambia da '3pool' a 'stablecoin'\n",
+          "archived_output": "results/archived_outputs/05_lending_local_projections_and_surprises__source_cell_2__gss_eevnt.txt"
+        }
+      ]
+    },
+    {
+      "file": "notebooks/06_granger_by_regime.ipynb",
+      "title": "Granger analysis across monetary regimes",
+      "selections": [
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/granger stablecoin CLAUDE.ipynb",
+          "cell_index_zero_based": 8,
+          "original_source_sha256": "74c255cbc6755192dfe2e8d040b36d1ca263433d2ac673f6446550ff09d0280a",
+          "packaged_source_sha256": "35ba6cd41a83644f869430cda0152bd22bd02f1064f5122bfe2e89fe3bf39573",
+          "changes": "Original analysis retained. Output file labels changed from TVL to Curve to avoid overwriting other analyses; the estimates are unchanged.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -271,7 +271,7 @@\n if __name__ == \"__main__\":\n     try:\n         # Load data\n-        df = pd.read_csv('aavebtc.csv', parse_dates=['date'], index_col='date')\n+        df = pd.read_csv(str(_DATA_DIR / 'aavebtc.csv'), parse_dates=['date'], index_col='date')\n         df.sort_index(inplace=True)\n         \n \n@@ -327,13 +327,13 @@\n             # Run Granger analysis\n             run_var_granger_analysis(\n                 df_period,\n-                f\"TVL_{period_name}\",\n+                f\"Curve_{period_name}\",\n                 VAR_VARIABLES_TVL,\n                 max_lags=5 if period_name == 'ZIRP' else 5  # puoi cambiare se vuoi\n             )\n         \n     except FileNotFoundError:\n-        print(\"❌ Error: 'aavebtc.csv' not found\")\n+        print(\"❌ Error: str(_DATA_DIR / 'aavebtc.csv') not found\")\n     except Exception as e:\n         print(f\"❌ Fatal error: {e}\")\n         import traceback\n",
+          "archived_output": "results/archived_outputs/06_granger_by_regime__source_cell_8__granger_stablecoin_CLAUDE.txt"
+        },
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/granger stablecoin CLAUDE.ipynb",
+          "cell_index_zero_based": 1,
+          "original_source_sha256": "072a43d9bdeb8543ad43cf5f9b1eca2f65f6000ce29f9826094363ae6bf8c2b8",
+          "packaged_source_sha256": "6ceb4d75424c9bf95e7a5c8357d72aca2542bfdde301555dcb62dab141d2ee44",
+          "changes": "Original analysis retained. Output file labels changed from TVL to Lending only.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -271,7 +271,7 @@\n if __name__ == \"__main__\":\n     try:\n         # Load data\n-        df = pd.read_csv('aavebtc.csv', parse_dates=['date'], index_col='date')\n+        df = pd.read_csv(str(_DATA_DIR / 'aavebtc.csv'), parse_dates=['date'], index_col='date')\n         df.sort_index(inplace=True)\n         \n \n@@ -327,13 +327,13 @@\n             # Run Granger analysis\n             run_var_granger_analysis(\n                 df_period,\n-                f\"TVL_{period_name}\",\n+                f\"Lending_{period_name}\",\n                 VAR_VARIABLES_TVL,\n                 max_lags=5 if period_name == 'ZIRP' else 5  # puoi cambiare se vuoi\n             )\n         \n     except FileNotFoundError:\n-        print(\"❌ Error: 'aavebtc.csv' not found\")\n+        print(\"❌ Error: str(_DATA_DIR / 'aavebtc.csv') not found\")\n     except Exception as e:\n         print(f\"❌ Fatal error: {e}\")\n         import traceback\n",
+          "archived_output": "results/archived_outputs/06_granger_by_regime__source_cell_1__granger_stablecoin_CLAUDE.txt"
+        },
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/granger stablecoin CLAUDE.ipynb",
+          "cell_index_zero_based": 5,
+          "original_source_sha256": "20a406836ecb88fd47b1a447c0ee5496495ce9bb3b70ba6284d98895940a3f66",
+          "packaged_source_sha256": "23a42732c252defa712676208869699010f65361be34975900a53dc2bafbe2b6",
+          "changes": "Original functions, variables and price adjustment retained. The saved source main block runs a full-sample variant, but its saved outputs contain three regimes. The regime loop is recovered from cells 1 and 8 of the same notebook. Treasury-to-TVL F statistics 1.407, 1.463 and 8.223 reproduce the submitted tables.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -264,72 +264,19 @@\n # MAIN EXECUTION\n # =====================================\n \n-if __name__ == \"__main__\":\n-    try:\n-        # Load data\n-        df = pd.read_csv('aavebtc.csv', parse_dates=['date'], index_col='date')\n-        df.sort_index(inplace=True)\n-        \n-        # ============================================================\n-        # PREPROCESSING: Price-Adjust TVL (CRITICAL!)\n-        # ============================================================\n-        print(\"\\n\" + \"=\"*60)\n-        print(\"  PREPROCESSING: PRICE-ADJUSTED TVL\")\n-        print(\"=\"*60)\n-        \n-        # 1. Create ETH price index (normalized to 100 at start)\n-        df['eth_price_index'] = (df['eth'] / df['eth'].iloc[0]) * 100\n-        \n-        # 2. Deflate TVL by ETH price index\n-        df['tvl_price_adjusted'] = (df['sum of tvl'] / df['eth_price_index']) * 100\n-        \n-        # 3. Calculate % change of price-adjusted TVL\n-        df['tvl_adj%'] = df['tvl_price_adjusted'].pct_change() * 100\n-        \n-        print(f\"✓ Price adjustment completed\")\n-        print(f\"  Correlation (nominal vs adjusted): {df[['tvl%', 'tvl_adj%']].corr().iloc[0,1]:.3f}\")\n-        \n-        # ============================================================\n-        # ANALYSIS: TVL with Price Adjustment\n-        # ============================================================\n-        VAR_VARIABLES_TVL_ADJ = [\n-            'tvl_adj%',       # ← price-adjusted!\n-            '3m ir',\n-            'gas_fees',\n-            'ethperpetual',\n-            'VIX',\n-            'volatility_btc'\n-        ]\n-        \n-        # Verify columns exist\n-        missing = [v for v in VAR_VARIABLES_TVL_ADJ if v not in df.columns]\n-        if missing:\n-            print(f\"❌ Missing columns: {missing}\")\n-            print(f\"Available columns: {df.columns.tolist()}\")\n-            exit(1)\n-        \n-        # Clean data\n-        df_clean = df[VAR_VARIABLES_TVL_ADJ].replace([np.inf, -np.inf], np.nan).dropna()\n-        print(f\"\\n✓ Data loaded: {len(df_clean)} observations\")\n-        print(f\"  Period: {df_clean.index[0]} to {df_clean.index[-1]}\")\n-        \n-        # Define analysis period\n-        df_hike = df_clean.loc['2021-01-01':'2025-09-11']\n-        \n-        if len(df_hike) < 30:\n-            print(f\"❌ Insufficient data: {len(df_hike)} obs\")\n-        else:\n-            # Run analysis with PRICE-ADJUSTED TVL\n-            run_var_granger_analysis(\n-                df_hike, \n-                \"TVL_PriceAdj_Hike_Cycle\",  # ← nuovo nome\n-                VAR_VARIABLES_TVL_ADJ, \n-                max_lags=5\n-            )\n-        \n-    except FileNotFoundError:\n-        print(\"❌ Error: 'aavebtc.csv' not found\")\n-    except Exception as e:\n-        print(f\"❌ Fatal error: {e}\")\n-        import traceback\n-        traceback.print_exc()\n+# Regime driver recovered from cells 1 and 8 of the same source notebook.\n+df = pd.read_csv(str(_DATA_DIR / 'aavebtc.csv'), parse_dates=['date'], index_col='date')\n+df.sort_index(inplace=True)\n+df['eth_price_index'] = (df['eth'] / df['eth'].iloc[0]) * 100\n+df['tvl_price_adjusted'] = (df['sum of tvl'] / df['eth_price_index']) * 100\n+df['tvl_adj%'] = df['tvl_price_adjusted'].pct_change() * 100\n+periods = {\n+    'ZIRP': ('2020-09-01', '2022-01-31'),\n+    'Hike_Cycle': ('2022-03-01', '2023-06-30'),\n+    'Plateau': ('2023-08-01', '2025-09-11'),\n+}\n+VAR_VARIABLES_TVL_ADJ = ['tvl_adj%', '3m ir', 'gas_fees', 'ethperpetual', 'VIX', 'volatility_btc']\n+for period_name, (start_date, end_date) in periods.items():\n+    df_period = df[VAR_VARIABLES_TVL_ADJ].loc[start_date:end_date]\n+    df_period = df_period.replace([np.inf, -np.inf], np.nan).dropna()\n+    run_var_granger_analysis(df_period, f\"TVL_{period_name}\", VAR_VARIABLES_TVL_ADJ, max_lags=5)\n",
+          "archived_output": "results/archived_outputs/06_granger_by_regime__source_cell_5__granger_stablecoin_CLAUDE.txt"
+        }
+      ]
+    },
+    {
+      "file": "notebooks/07_tvl_event_study.ipynb",
+      "title": "TVL daily event study",
+      "selections": [
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/TVL DELLA TESI CON SENSITIVITA.ipynb",
+          "cell_index_zero_based": 4,
+          "original_source_sha256": "399fba9a6a851a0c3f24f848ec030ecad94baa63712efe890c53b7117a730663",
+          "packaged_source_sha256": "a812d9ba2cbe62c7a570a1d827223880b1ae7293145a5843ff96dfd0d6da8660",
+          "changes": "Original source retained. It estimates days -10 to +20; Appendix Table 5.5 displays the -2 to +20 subset. The archived numeric outputs reproduce that subset.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -10,10 +10,10 @@\n # =============================================================================\n try:\n     # Carica il tuo CSV principale che contiene GIÀ 'tvl%'\n-    df_analysis = pd.read_csv('aavetvl.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n+    df_analysis = pd.read_csv(str(_DATA_DIR / 'aavetvl.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n     \n     # Carica le date FOMC\n-    df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n+    df_surprises = pd.read_csv(str(_DATA_DIR / 'ABJ-2024.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n     \n     # Definisci le colonne\n     DEPENDENT_VAR = 'tvl%'\n",
+          "archived_output": "results/archived_outputs/07_tvl_event_study__source_cell_4__TVL_DELLA_TESI_CON_SENSITIVITA.txt"
+        }
+      ]
+    },
+    {
+      "file": "notebooks/08_tvl_price_adjustment_and_placebo.ipynb",
+      "title": "TVL price adjustment and placebo analysis",
+      "selections": [
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/Tvl  CLAUDE.ipynb",
+          "cell_index_zero_based": 4,
+          "original_source_sha256": "636beb6526666f2b0ff3d7ad56a10d5b4e96563166a4ffa1734015977e8ce05f",
+          "packaged_source_sha256": "c435baf8c857faa3e99c0d424b40a84ae1b64ff3e31963bbfc613423d3159c4e",
+          "changes": "Original data preparation and horizon regressions retained. T+2 coefficients reproduce -20.72 and -32.73 at printed precision.",
+          "diff": "--- original cell\n+++ packaged cell\n@@ -11,13 +11,13 @@\n # =============================================================================\n # LOAD DATA - CLEAN START\n # =============================================================================\n-df_full = pd.read_csv('aavetvl.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n-df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')\n+df_full = pd.read_csv(str(_DATA_DIR / 'aavetvl.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n+df_surprises = pd.read_csv(str(_DATA_DIR / 'ABJ-2024.csv'), parse_dates=['date'], dayfirst=True).set_index('date')\n \n # Check if FEDFUNDS already exists\n if 'FEDFUNDS' not in df_full.columns:\n     # Only load if not present\n-    df_fedfunds = pd.read_csv('FEDFUNDS.csv', parse_dates=['observation_date']).set_index('observation_date')\n+    df_fedfunds = pd.read_csv(str(_DATA_DIR / 'FEDFUNDS.csv'), parse_dates=['observation_date']).set_index('observation_date')\n     df_fedfunds.index.name = 'date'\n     if df_fedfunds['FEDFUNDS'].max() > 1:\n         df_fedfunds['FEDFUNDS'] = df_fedfunds['FEDFUNDS'] / 100\n",
+          "archived_output": "results/archived_outputs/08_tvl_price_adjustment_and_placebo__source_cell_4__Tvl__CLAUDE.txt"
+        },
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/Tvl  CLAUDE.ipynb",
+          "cell_index_zero_based": 5,
+          "original_source_sha256": "afa7c94fd704f203ea7cac1f966c9767ee78b0aceec503c4190744aa37561f68",
+          "packaged_source_sha256": "afa7c94fd704f203ea7cac1f966c9767ee78b0aceec503c4190744aa37561f68",
+          "changes": "Original plotting cell retained. It depends on the preceding cell. The submitted versions of the three used figures are byte-identical to the archived image files.",
+          "diff": "",
+          "archived_output": "results/archived_outputs/08_tvl_price_adjustment_and_placebo__source_cell_5__Tvl__CLAUDE.txt"
+        },
+        {
+          "source": "TUTTO IL CODICE/TESI MASTER/AAVE v2/Tvl  CLAUDE.ipynb",
+          "cell_index_zero_based": 6,
+          "original_source_sha256": "d280c6d471e525c217945c38d0152773cae7301c7c5eb1486a706c333e597151",
+          "packaged_source_sha256": "d280c6d471e525c217945c38d0152773cae7301c7c5eb1486a706c333e597151",
+          "changes": "Original 1,000-iteration random-date simulation retained, without inventing a historical seed. Saved historical p-values 0.046 and 0.064 are in archived_outputs. Use --quick to omit this slow cell during a smoke run.",
+          "diff": "",
+          "archived_output": "results/archived_outputs/08_tvl_price_adjustment_and_placebo__source_cell_6__Tvl__CLAUDE.txt"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "file": "data/aavegas.csv",
+      "original": "TUTTO IL CODICE/TESI MASTER/3POOL/aavegas.csv",
+      "sha256": "bb245a4e5ce635ee1fddee3afd4405158bb641baad349f84afd58aacbd00be9c",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "data/aavenew.csv",
+      "original": "TUTTO IL CODICE/TESI MASTER/AAVE v2/aavenew.csv",
+      "sha256": "3a6feece7ad6cd987d2672e62150128a61c55d05bd8b24cb2e26631700716223",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "data/aavebtc.csv",
+      "original": "TUTTO IL CODICE/TESI MASTER/AAVE v2/aavebtc.csv",
+      "sha256": "b1a1af1ae6dffb670bb8076e53432d036662c0e2b0b40a1a6c63391941019a19",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "data/aavetvl.csv",
+      "original": "TUTTO IL CODICE/TESI MASTER/AAVE v2/vecchie e non immagini/aavetvl.csv",
+      "sha256": "32f83662bf4bdcbfbd7ec8e5a7607f2e86cea2b61e0bf99a7fb3a2028ef71ab7",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "data/ABJ-2024.csv",
+      "original": "TUTTO IL CODICE/TESI MASTER/AAVE v2/ABJ-2024.csv",
+      "sha256": "0b4a99532c2502e055fdfcf9d12c65a8103392fd25de0f10d95afd11cfd28c1e",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "data/btc_filtered.csv",
+      "original": "TUTTO IL CODICE/TESI MASTER/AAVE v2/btc_filtered.csv",
+      "sha256": "771099f079a7443559464dd509a9c7c4ffea1b60f1fa3e2495f641c937fa7da1",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "data/FEDFUNDS.csv",
+      "original": "TUTTO IL CODICE/TESI MASTER/AAVE v2/FEDFUNDS.csv",
+      "sha256": "699b64fd1a42837efe65521379d1e8cb1fd407d792014e3baf90eaa341685eae",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "thesis/Thesis Nova 2026 Luca Paul Beitone.pdf",
+      "original": "thesis (1)/Thesis Nova 2026 Luca Paul Beitone.pdf",
+      "sha256": "752578a72a90bd4d7ad2450e5eddc63acd4bf9909de37ad4d8b7015eeb299dd0",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/comparazione.pdf",
+      "original": "thesis (1)/images/comparazione.pdf",
+      "sha256": "387bd54f0ef8f035970fe27a00aeaa38775eccc5d694bbc30a42eee7b6dc05b2",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/correlazione.pdf",
+      "original": "thesis (1)/images/correlazione.pdf",
+      "sha256": "51cb619b4a56c098e0d96e817f4851962df55e97dd0da6a72cea05cabce6d277",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/ammcurves.pdf",
+      "original": "thesis (1)/images/ammcurves.pdf",
+      "sha256": "8f39e32ca437e3c511ff60a29b2fb590f0a7c8e43fcb04c7f535122d965d0763",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/event_study_surprises_3pool.png",
+      "original": "thesis (1)/images/event_study_surprises_3pool.png",
+      "sha256": "3d10ed381139a9809e7f280461af1e72d02ac48d4c07b9b33a56b9007272f27b",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/local_projections_fomc_3pool.png",
+      "original": "thesis (1)/images/local_projections_fomc_3pool.png",
+      "sha256": "925ddc8486cb905eeb345f4264abcb081587bbb6e4204eea36ff5fdd5eec0892",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/local_projections_fomc_stable.png",
+      "original": "thesis (1)/images/local_projections_fomc_stable.png",
+      "sha256": "2c9c6d03622f7107530bb12cf14833792897ca8c082b9d0f32fbbb9d50a04e7d",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/tvl_interpretation_summary.png",
+      "original": "thesis (1)/images/tvl_interpretation_summary.png",
+      "sha256": "17bf11a1fcd34f9ecf3b2f8828a7d17a8e6421ecf620cedc912ea1282ffa9fa8",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/tvl_price_adjustment_diagnostic.png",
+      "original": "thesis (1)/images/tvl_price_adjustment_diagnostic.png",
+      "sha256": "a211cb63b589e72b073c06fa2936905027b09b5387f1e2418744954df54d8e45",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/tvl_ratio_analysis.png",
+      "original": "thesis (1)/images/tvl_ratio_analysis.png",
+      "sha256": "5acb5dc7b92d545ec8fe45a9b1b694f0b61e3e2c148a60bb45665bf5840ad128",
+      "byte_identical": true,
+      "included_in_repo": false
+    },
+    {
+      "file": "results/thesis_figures/tvl_placebo_both_measures.png",
+      "original": "thesis (1)/images/tvl_placebo_both_measures.png",
+      "sha256": "36e95601de84323b9b3a25acb0e13e4366bd342867e74d105cac8af51471e974",
+      "byte_identical": true,
+      "included_in_repo": false
+    }
+  ]
+}

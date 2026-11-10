@@ -1,0 +1,40 @@
+
+================================================================================
+GENERATING ALL TVL PLOTS
+================================================================================
+
+1. Creating comparison plot...
+
+<Figure size 1200x700 with 1 Axes>
+✓ Saved: tvl_nominal_vs_adjusted_comparison.png
+
+2. Creating diagnostic plot...
+
+<Figure size 1400x1100 with 4 Axes>
+✓ Saved: tvl_price_adjustment_diagnostic.png
+
+3. Creating ratio analysis plot...
+
+<Figure size 1200x600 with 1 Axes>
+✓ Saved: tvl_ratio_analysis.png
+
+4. Creating interpretation summary...
+
+<Figure size 1400x800 with 3 Axes>
+✓ Saved: tvl_interpretation_summary.png
+
+================================================================================
+ALL PLOTS GENERATED!
+================================================================================
+
+Files created:
+  1. tvl_nominal_vs_adjusted_comparison.png
+  2. tvl_price_adjustment_diagnostic.png
+  3. tvl_ratio_analysis.png
+  4. tvl_interpretation_summary.png
+
+Key Finding:
+  At T+2: Ratio = 1.58
+  → Price-adjusted effect is 58% LARGER
+  → Genuine capital flight exceeds mechanical price effect
+================================================================================

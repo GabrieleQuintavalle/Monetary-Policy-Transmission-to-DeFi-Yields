@@ -1,0 +1,117 @@
+<original notebook execution>:10: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_full = pd.read_csv('aavenew.csv', parse_dates=['date'], dayfirst=True).set_index('date')
+<original notebook execution>:11: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')
+
+Number of FOMC events: 27
+Sample period: 2021-01-01 00:00:00 to 2025-09-11 00:00:00
+
+================================================================================
+LOCAL PROJECTIONS WITH CONTROLS
+================================================================================
+  WITH h=1: β = -0.013858, p = 0.7124, N = 26
+  WITH h=2: β = 0.014285, p = 0.1033, N = 24
+  WITH h=3: β = 0.002640, p = 0.3888, N = 17
+  WITH h=5: β = 0.007559*, p = 0.0742, N = 20
+  WITH h=7: β = 0.025362***, p = 0.0001, N = 26
+  WITH h=10: β = 0.020812, p = 0.1720, N = 23
+  WITH h=15: β = -0.006079, p = 0.4921, N = 21
+  WITH h=20: β = -0.000537, p = 0.9776, N = 26
+  WITH h=30: β = -0.002425, p = 0.4759, N = 26
+
+================================================================================
+LOCAL PROJECTIONS WITHOUT CONTROLS
+================================================================================
+  NO h=1: β = -0.007282, p = 0.6770, N = 26
+  NO h=2: β = 0.013101**, p = 0.0305, N = 24
+  NO h=3: β = 0.003467, p = 0.3942, N = 17
+  NO h=5: β = 0.000879, p = 0.7723, N = 20
+  NO h=7: β = 0.023882***, p = 0.0049, N = 26
+  NO h=10: β = 0.034442**, p = 0.0321, N = 23
+  NO h=15: β = -0.000618, p = 0.9345, N = 21
+  NO h=20: β = 0.001326, p = 0.9391, N = 26
+  NO h=30: β = -0.005902**, p = 0.0144, N = 26
+
+================================================================================
+COMPARISON: WITH vs WITHOUT CONTROLS
+================================================================================
+ horizon  beta_with  pval_with  nobs  beta_without  pval_without  beta_diff  pct_change
+       1  -0.013858   0.712413    26     -0.007282      0.677003   0.006576   47.453401
+       2   0.014285   0.103263    24      0.013101      0.030521  -0.001184   -8.287567
+       3   0.002640   0.388750    17      0.003467      0.394155   0.000827   31.326431
+       5   0.007559   0.074231    20      0.000879      0.772330  -0.006680  -88.373042
+       7   0.025362   0.000109    26      0.023882      0.004880  -0.001480   -5.835944
+      10   0.020812   0.171982    23      0.034442      0.032102   0.013630   65.489775
+      15  -0.006079   0.492114    21     -0.000618      0.934542   0.005462   89.837621
+      20  -0.000537   0.977572    26      0.001326      0.939068   0.001864  346.784886
+      30  -0.002425   0.475919    26     -0.005902      0.014402  -0.003476 -143.332615
+
+<Figure size 1600x600 with 2 Axes>
+
+✅ Plot saved: 'local_projections_comparison.png'
+
+================================================================================
+STATISTICAL INTERPRETATION
+================================================================================
+
+Average difference (β_without - β_with): 0.001726
+Positive differences: 5/9 horizons
+Percentage: 55.6%
+
+➖ MIXED EVIDENCE:
+   Controls have varying effects across horizons
+
+--------------------------------------------------------------------------------
+HORIZON-SPECIFIC ANALYSIS:
+--------------------------------------------------------------------------------
+
+h=1:
+  WITH controls:    β = -0.013858
+  WITHOUT controls: β = -0.007282
+  Difference:       Δβ = +0.006576 (+47.5%)
+  → Controls REDUCE effect (mediation at h=1)
+
+h=2:
+  WITH controls:    β = +0.014285
+  WITHOUT controls: β = +0.013101**
+  Difference:       Δβ = -0.001184 (-8.3%)
+
+h=3:
+  WITH controls:    β = +0.002640
+  WITHOUT controls: β = +0.003467
+  Difference:       Δβ = +0.000827 (+31.3%)
+
+h=5:
+  WITH controls:    β = +0.007559*
+  WITHOUT controls: β = +0.000879
+  Difference:       Δβ = -0.006680 (-88.4%)
+  → Controls INCREASE effect (suppression at h=5)
+
+h=7:
+  WITH controls:    β = +0.025362***
+  WITHOUT controls: β = +0.023882***
+  Difference:       Δβ = -0.001480 (-5.8%)
+
+h=10:
+  WITH controls:    β = +0.020812
+  WITHOUT controls: β = +0.034442**
+  Difference:       Δβ = +0.013630 (+65.5%)
+  → Controls REDUCE effect (mediation at h=10)
+
+h=15:
+  WITH controls:    β = -0.006079
+  WITHOUT controls: β = -0.000618
+  Difference:       Δβ = +0.005462 (+89.8%)
+  → Controls REDUCE effect (mediation at h=15)
+
+h=20:
+  WITH controls:    β = -0.000537
+  WITHOUT controls: β = +0.001326
+  Difference:       Δβ = +0.001864 (+346.8%)
+
+h=30:
+  WITH controls:    β = -0.002425
+  WITHOUT controls: β = -0.005902**
+  Difference:       Δβ = -0.003476 (-143.3%)
+
+================================================================================

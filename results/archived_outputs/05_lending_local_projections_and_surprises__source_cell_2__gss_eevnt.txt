@@ -1,0 +1,154 @@
+<original notebook execution>:10: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_full = pd.read_csv('aavebtc.csv', parse_dates=['date'], dayfirst=True).set_index('date')
+<original notebook execution>:11: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')
+
+Number of FOMC events: 27
+Sample period: 2021-01-01 00:00:00 to 2025-09-11 00:00:00
+
+Estimating horizon h=0...
+  N events: 0
+  ⚠️ Error estimating model: zero-size array to reduction operation maximum which has no identity
+
+Estimating horizon h=1...
+  N events: 26
+  β(1) = -0.011870, p = 0.6623
+
+Estimating horizon h=2...
+  N events: 25
+  β(2) = -0.007451, p = 0.4477
+
+Estimating horizon h=3...
+  N events: 22
+  β(3) = -0.001766, p = 0.7983
+
+Estimating horizon h=5...
+  N events: 26
+  β(5) = 0.023760, p = 0.2681
+
+Estimating horizon h=7...
+  N events: 25
+  β(7) = 0.000682, p = 0.9377
+
+Estimating horizon h=10...
+  N events: 25
+  β(10) = 0.002377, p = 0.8837
+
+Estimating horizon h=15...
+  N events: 25
+  β(15) = -0.037249*, p = 0.0600
+
+Estimating horizon h=20...
+  N events: 24
+  β(20) = -0.000820, p = 0.8121
+
+Estimating horizon h=30...
+  N events: 23
+  β(30) = -0.002340, p = 0.6111
+
+================================================================================
+LOCAL PROJECTIONS RESULTS (FOMC Events)
+================================================================================
+ horizon      beta       se     pval  nobs
+       1 -0.011870 0.027178 0.662300    26
+       2 -0.007451 0.009813 0.447697    25
+       3 -0.001766 0.006911 0.798348    22
+       5  0.023760 0.021455 0.268109    26
+       7  0.000682 0.008724 0.937705    25
+      10  0.002377 0.016254 0.883725    25
+      15 -0.037249 0.019803 0.059974    25
+      20 -0.000820 0.003450 0.812078    24
+      30 -0.002340 0.004601 0.611083    23
+
+<Figure size 1200x600 with 1 Axes>
+
+✅ Plot saved: 'local_projections_fomc_3pool.png'
+
+================================================================================
+INTERPRETATION
+================================================================================
+
+SHORT RUN (1-7 days):
+  Average β = 0.000671
+  Significant: 0/5 horizons
+  → POSITIVE short-run effect
+
+LONG RUN (>15 days):
+  Average β = -0.001580
+  Significant: 0/2 horizons
+  → NEGATIVE long-run effect
+
+--------------------------------------------------------------------------------
+RECONCILIATION:
+--------------------------------------------------------------------------------
+================================================================================
+
+================================================================================
+METHODOLOGY 1: REACTION TO UNANTICIPATED SURPRISES
+================================================================================
+FOMC events with surprises: 27
+
+Horizon d=-2...
+  β_target = 0.001218, p = 0.0894
+  β_path   = 0.000077, p = 0.5055
+
+Horizon d=-1...
+  β_target = 0.000158, p = 0.4434
+  β_path   = 0.000084, p = 0.2958
+
+Horizon d=0...
+  β_target = 0.000000, p = nan
+  β_path   = 0.000000, p = nan
+
+Horizon d=1...
+  β_target = -0.000272, p = 0.5602
+  β_path   = 0.000157, p = 0.1189
+
+Horizon d=2...
+  β_target = 0.000201, p = 0.7130
+  β_path   = 0.000180, p = 0.1145
+
+Horizon d=3...
+  β_target = 0.000995, p = 0.1202
+  β_path   = 0.000305, p = 0.0315
+
+Horizon d=5...
+  β_target = 0.000308, p = 0.6412
+  β_path   = 0.000132, p = 0.3315
+
+Horizon d=7...
+  β_target = -0.001001, p = 0.1863
+  β_path   = -0.000154, p = 0.3644
+
+Horizon d=10...
+  β_target = -0.000477, p = 0.3596
+  β_path   = 0.000136, p = 0.5386
+
+Horizon d=15...
+  β_target = 0.000379, p = 0.3632
+  β_path   = 0.000183, p = 0.1153
+
+Horizon d=20...
+  β_target = 0.000565, p = 0.3832
+  β_path   = 0.000288, p = 0.0952
+
+================================================================================
+SURPRISE-BASED RESULTS
+================================================================================
+ horizon  beta_target  pval_target  beta_path  pval_path  nobs
+      -2     0.001218     0.089426   0.000077   0.505519    27
+      -1     0.000158     0.443368   0.000084   0.295849    27
+       0     0.000000          NaN   0.000000        NaN    27
+       1    -0.000272     0.560151   0.000157   0.118948    27
+       2     0.000201     0.713034   0.000180   0.114513    27
+       3     0.000995     0.120181   0.000305   0.031540    27
+       5     0.000308     0.641169   0.000132   0.331469    27
+       7    -0.001001     0.186259  -0.000154   0.364380    27
+      10    -0.000477     0.359632   0.000136   0.538648    27
+      15     0.000379     0.363155   0.000183   0.115324    27
+      20     0.000565     0.383202   0.000288   0.095168    27
+
+<Figure size 1500x600 with 2 Axes>
+
+✅ Surprise-based analysis complete!
+✅ Plot saved: 'event_study_surprises_3pool.png'

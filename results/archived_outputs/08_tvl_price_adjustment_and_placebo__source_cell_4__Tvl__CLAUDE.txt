@@ -1,0 +1,65 @@
+================================================================================
+TVL PRICE-ADJUSTED - FRESH START
+================================================================================
+✓ Loaded 1715 rows
+✓ FEDFUNDS: 1715 valid values
+✓ Clean sample: 1713 rows
+✓ nom_dt valid: 1712
+✓ adj_dt valid: 1712
+✓ FOMC events: 24
+
+============================================================
+NOMINAL
+============================================================
+  h=2: β=-20.7156, N=24
+  h=3: β=0.5431, N=24
+  h=4: β=-1.2571, N=24
+  h=5: β=7.6733, N=24
+  h=10: β=5.2008, N=24
+  h=15: β=2.2484, N=24
+  h=20: β=2.3398, N=24
+
+============================================================
+PRICE-ADJUSTED
+============================================================
+  h=2: β=-32.7266, N=24
+  h=3: β=1.7427, N=24
+  h=4: β=6.6581, N=24
+  h=5: β=10.7251, N=24
+  h=10: β=7.8548, N=24
+  h=15: β=-4.8991, N=24
+  h=20: β=3.1938, N=24
+
+================================================================================
+RESULTS
+================================================================================
++-----------+-----------+------------+---------+
+| Horizon   |   Nominal |   Adjusted |   Ratio |
++===========+===========+============+=========+
+| T+2       |  -20.7156 |   -32.7266 |    1.58 |
++-----------+-----------+------------+---------+
+| T+3       |    0.5431 |     1.7427 |    3.21 |
++-----------+-----------+------------+---------+
+| T+4       |   -1.2571 |     6.6581 |   -5.3  |
++-----------+-----------+------------+---------+
+| T+5       |    7.6733 |    10.7251 |    1.4  |
++-----------+-----------+------------+---------+
+| T+10      |    5.2008 |     7.8548 |    1.51 |
++-----------+-----------+------------+---------+
+| T+15      |    2.2484 |    -4.8991 |   -2.18 |
++-----------+-----------+------------+---------+
+| T+20      |    2.3398 |     3.1938 |    1.36 |
++-----------+-----------+------------+---------+
+
+<original notebook execution>:14: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_full = pd.read_csv('aavetvl.csv', parse_dates=['date'], dayfirst=True).set_index('date')
+<original notebook execution>:15: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')
+<original notebook execution>:29: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  df_full['FEDFUNDS'] = df_full['FEDFUNDS'].fillna(method='ffill')
+
+<Figure size 1200x700 with 1 Axes>
+
+✓ Plot saved
+
+================================================================================

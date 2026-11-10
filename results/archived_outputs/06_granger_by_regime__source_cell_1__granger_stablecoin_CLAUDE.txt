@@ -1,0 +1,490 @@
+<original notebook execution>:274: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv('aavebtc.csv', parse_dates=['date'], index_col='date')
+/opt/anaconda3/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: No frequency information was provided, so inferred frequency D will be used.
+  self._init_dates(dates, freq)
+
+✓ Price adjustment completed
+
+
+================================================================================
+  REGIME: ZIRP (2020-09-01 to 2022-01-31)
+================================================================================
+✓ Sample size: 396 observations
+
+
+============================================================
+  VAR ANALYSIS: TVL_ZIRP
+============================================================
+
+Sample period: 2021-01-01 00:00:00 to 2022-01-31 00:00:00
+Observations: 396
+
+============================================================
+STATIONARITY CHECKS (for information only)
+============================================================
+
+- Stationarity Test for 'stablecoin':
+  ADF Statistic: -8.0391
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for '3m ir':
+  ADF Statistic: -6.4021
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'gas_fees':
+  ADF Statistic: -5.7028
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'ethperpetual':
+  ADF Statistic: -10.4973
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'VIX':
+  ADF Statistic: -9.8269
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'volatility_btc':
+  ADF Statistic: -4.1576
+  p-value: 0.0008
+  Conclusion: Stationary
+
+============================================================
+VAR SPECIFICATION DECISION
+============================================================
+
+✓ Using LEVELS for VAR estimation
+  Following: Sims, Stock & Watson (1990)
+  Rationale: Focus on dynamic relationships (Granger causality)
+            not structural identification.
+  Note: Including lags ensures residuals are stationary,
+        avoiding spurious regression issues.
+
+============================================================
+  VAR MODEL ESTIMATION
+============================================================
+
+✓ VAR model fitted successfully
+  Optimal lag order (AIC): 4
+  Data type: levels (Sims et al. 1990)
+
+============================================================
+  GRANGER CAUSALITY TESTS
+============================================================
+
+Target (caused): stablecoin
+Testing causality from: ['3m ir', 'gas_fees', 'ethperpetual', 'VIX', 'volatility_btc']
+
+--- Testing: 3m ir → stablecoin ---
+Granger causality F-test. H_0: 3m ir does not Granger-cause stablecoin. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+        0.3256          2.376   0.861 (4, 2202)
+-----------------------------------------------
+
+--- Testing: gas_fees → stablecoin ---
+Granger causality F-test. H_0: gas_fees does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         2.628          2.376   0.033 (4, 2202)
+-----------------------------------------------
+
+--- Testing: ethperpetual → stablecoin ---
+Granger causality F-test. H_0: ethperpetual does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         5.479          2.376   0.000 (4, 2202)
+-----------------------------------------------
+
+--- Testing: VIX → stablecoin ---
+Granger causality F-test. H_0: VIX does not Granger-cause stablecoin. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         1.066          2.376   0.372 (4, 2202)
+-----------------------------------------------
+
+--- Testing: volatility_btc → stablecoin ---
+Granger causality F-test. H_0: volatility_btc does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         4.239          2.376   0.002 (4, 2202)
+-----------------------------------------------
+
+============================================================
+  REVERSE CAUSALITY TEST (Critical for Thesis!)
+============================================================
+
+--- Testing REVERSE: stablecoin → 3m ir ---
+Granger causality F-test. H_0: stablecoin does not Granger-cause 3m ir. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+        0.5743          2.376   0.681 (4, 2202)
+-----------------------------------------------
+
+✓ FINDING: No reverse causality (p=0.6813)
+  → DeFi is a 'price taker' from TradFi ✓
+
+============================================================
+  GRANGER CAUSALITY SUMMARY TABLE
+============================================================
++-----------------------------+----------+-----------+----------+
+| Causing → Caused            |   F-stat |   p-value | Result   |
++=============================+==========+===========+==========+
+| 3m ir → stablecoin          |    0.326 |    0.8609 | No       |
++-----------------------------+----------+-----------+----------+
+| gas_fees → stablecoin       |    2.628 |    0.0329 | **       |
++-----------------------------+----------+-----------+----------+
+| ethperpetual → stablecoin   |    5.479 |    0.0002 | ***      |
++-----------------------------+----------+-----------+----------+
+| VIX → stablecoin            |    1.066 |    0.3718 | No       |
++-----------------------------+----------+-----------+----------+
+| volatility_btc → stablecoin |    4.239 |    0.002  | ***      |
++-----------------------------+----------+-----------+----------+
+| stablecoin → 3m ir          |    0.574 |    0.6813 | No       |
++-----------------------------+----------+-----------+----------+
+
+✓ Saved LaTeX table: granger_TVL_ZIRP.tex
+
+============================================================
+  IMPULSE RESPONSE FUNCTIONS
+============================================================
+✓ Saved clean IRF plot: irf_stablecoin_to_3m ir_TVL_ZIRP_clean.png
+
+<Figure size 600x400 with 1 Axes>
+
+
+================================================================================
+  REGIME: Hike_Cycle (2022-03-01 to 2023-06-30)
+================================================================================
+✓ Sample size: 487 observations
+
+
+============================================================
+  VAR ANALYSIS: TVL_Hike_Cycle
+============================================================
+
+Sample period: 2022-03-01 00:00:00 to 2023-06-30 00:00:00
+Observations: 487
+
+============================================================
+STATIONARITY CHECKS (for information only)
+============================================================
+
+- Stationarity Test for 'stablecoin':
+  ADF Statistic: -6.0310
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for '3m ir':
+  ADF Statistic: -2.1331
+  p-value: 0.2314
+  Conclusion: Non-stationary (unit root)
+
+- Stationarity Test for 'gas_fees':
+  ADF Statistic: -7.7943
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'ethperpetual':
+  ADF Statistic: -6.5279
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'VIX':
+  ADF Statistic: -8.3724
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'volatility_btc':
+  ADF Statistic: -3.5691
+  p-value: 0.0064
+  Conclusion: Stationary
+
+============================================================
+VAR SPECIFICATION DECISION
+============================================================
+
+✓ Using LEVELS for VAR estimation
+  Following: Sims, Stock & Watson (1990)
+  Rationale: Focus on dynamic relationships (Granger causality)
+            not structural identification.
+  Note: Including lags ensures residuals are stationary,
+        avoiding spurious regression issues.
+
+  Mixed integration detected: ['3m ir'] appear I(1)
+  This is acceptable for Granger causality testing in levels.
+
+============================================================
+  VAR MODEL ESTIMATION
+============================================================
+
+✓ VAR model fitted successfully
+  Optimal lag order (AIC): 5
+  Data type: levels (Sims et al. 1990)
+
+============================================================
+  GRANGER CAUSALITY TESTS
+============================================================
+
+Target (caused): stablecoin
+Testing causality from: ['3m ir', 'gas_fees', 'ethperpetual', 'VIX', 'volatility_btc']
+
+--- Testing: 3m ir → stablecoin ---
+Granger causality F-test. H_0: 3m ir does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         5.629          2.217   0.000 (5, 2706)
+-----------------------------------------------
+
+--- Testing: gas_fees → stablecoin ---
+Granger causality F-test. H_0: gas_fees does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         8.219          2.217   0.000 (5, 2706)
+-----------------------------------------------
+
+--- Testing: ethperpetual → stablecoin ---
+Granger causality F-test. H_0: ethperpetual does not Granger-cause stablecoin. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+        0.7123          2.217   0.614 (5, 2706)
+-----------------------------------------------
+
+--- Testing: VIX → stablecoin ---
+Granger causality F-test. H_0: VIX does not Granger-cause stablecoin. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         2.009          2.217   0.074 (5, 2706)
+-----------------------------------------------
+
+--- Testing: volatility_btc → stablecoin ---
+Granger causality F-test. H_0: volatility_btc does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         6.410          2.217   0.000 (5, 2706)
+-----------------------------------------------
+
+============================================================
+  REVERSE CAUSALITY TEST (Critical for Thesis!)
+============================================================
+
+--- Testing REVERSE: stablecoin → 3m ir ---
+Granger causality F-test. H_0: stablecoin does not Granger-cause 3m ir. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         1.338          2.217   0.245 (5, 2706)
+-----------------------------------------------
+
+✓ FINDING: No reverse causality (p=0.2452)
+  → DeFi is a 'price taker' from TradFi ✓
+
+============================================================
+  GRANGER CAUSALITY SUMMARY TABLE
+============================================================
++-----------------------------+----------+-----------+----------+
+| Causing → Caused            |   F-stat |   p-value | Result   |
++=============================+==========+===========+==========+
+| 3m ir → stablecoin          |    5.629 |    0      | ***      |
++-----------------------------+----------+-----------+----------+
+| gas_fees → stablecoin       |    8.219 |    0      | ***      |
++-----------------------------+----------+-----------+----------+
+| ethperpetual → stablecoin   |    0.712 |    0.6142 | No       |
++-----------------------------+----------+-----------+----------+
+| VIX → stablecoin            |    2.009 |    0.0743 | *        |
++-----------------------------+----------+-----------+----------+
+| volatility_btc → stablecoin |    6.41  |    0      | ***      |
++-----------------------------+----------+-----------+----------+
+| stablecoin → 3m ir          |    1.338 |    0.2452 | No       |
++-----------------------------+----------+-----------+----------+
+
+✓ Saved LaTeX table: granger_TVL_Hike_Cycle.tex
+
+============================================================
+  IMPULSE RESPONSE FUNCTIONS
+============================================================
+
+/opt/anaconda3/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: No frequency information was provided, so inferred frequency D will be used.
+  self._init_dates(dates, freq)
+
+✓ Saved clean IRF plot: irf_stablecoin_to_3m ir_TVL_Hike_Cycle_clean.png
+
+<Figure size 600x400 with 1 Axes>
+
+
+================================================================================
+  REGIME: Plateau (2023-08-01 to 2025-09-11)
+================================================================================
+✓ Sample size: 747 observations
+
+
+============================================================
+  VAR ANALYSIS: TVL_Plateau
+============================================================
+
+Sample period: 2023-08-01 00:00:00 to 2025-09-09 00:00:00
+Observations: 747
+
+============================================================
+STATIONARITY CHECKS (for information only)
+============================================================
+
+- Stationarity Test for 'stablecoin':
+  ADF Statistic: -3.8748
+  p-value: 0.0022
+  Conclusion: Stationary
+
+- Stationarity Test for '3m ir':
+  ADF Statistic: -2.0854
+  p-value: 0.2504
+  Conclusion: Non-stationary (unit root)
+
+- Stationarity Test for 'gas_fees':
+  ADF Statistic: -3.4032
+  p-value: 0.0109
+  Conclusion: Stationary
+
+- Stationarity Test for 'ethperpetual':
+  ADF Statistic: -4.2552
+  p-value: 0.0005
+  Conclusion: Stationary
+
+- Stationarity Test for 'VIX':
+  ADF Statistic: -20.4471
+  p-value: 0.0000
+  Conclusion: Stationary
+
+- Stationarity Test for 'volatility_btc':
+  ADF Statistic: -4.2733
+  p-value: 0.0005
+  Conclusion: Stationary
+
+============================================================
+VAR SPECIFICATION DECISION
+============================================================
+
+✓ Using LEVELS for VAR estimation
+  Following: Sims, Stock & Watson (1990)
+  Rationale: Focus on dynamic relationships (Granger causality)
+            not structural identification.
+  Note: Including lags ensures residuals are stationary,
+        avoiding spurious regression issues.
+
+  Mixed integration detected: ['3m ir'] appear I(1)
+  This is acceptable for Granger causality testing in levels.
+
+============================================================
+  VAR MODEL ESTIMATION
+============================================================
+
+✓ VAR model fitted successfully
+  Optimal lag order (AIC): 5
+  Data type: levels (Sims et al. 1990)
+
+============================================================
+  GRANGER CAUSALITY TESTS
+============================================================
+
+Target (caused): stablecoin
+Testing causality from: ['3m ir', 'gas_fees', 'ethperpetual', 'VIX', 'volatility_btc']
+
+--- Testing: 3m ir → stablecoin ---
+Granger causality F-test. H_0: 3m ir does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         4.572          2.216   0.000 (5, 4266)
+-----------------------------------------------
+
+--- Testing: gas_fees → stablecoin ---
+Granger causality F-test. H_0: gas_fees does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         3.059          2.216   0.009 (5, 4266)
+-----------------------------------------------
+
+--- Testing: ethperpetual → stablecoin ---
+Granger causality F-test. H_0: ethperpetual does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         3.754          2.216   0.002 (5, 4266)
+-----------------------------------------------
+
+--- Testing: VIX → stablecoin ---
+Granger causality F-test. H_0: VIX does not Granger-cause stablecoin. Conclusion: fail to reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+        0.9783          2.216   0.429 (5, 4266)
+-----------------------------------------------
+
+--- Testing: volatility_btc → stablecoin ---
+Granger causality F-test. H_0: volatility_btc does not Granger-cause stablecoin. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         6.014          2.216   0.000 (5, 4266)
+-----------------------------------------------
+
+============================================================
+  REVERSE CAUSALITY TEST (Critical for Thesis!)
+============================================================
+
+--- Testing REVERSE: stablecoin → 3m ir ---
+Granger causality F-test. H_0: stablecoin does not Granger-cause 3m ir. Conclusion: reject H_0 at 5% significance level.
+===============================================
+Test statistic Critical value p-value     df   
+-----------------------------------------------
+         5.576          2.216   0.000 (5, 4266)
+-----------------------------------------------
+
+⚠ WARNING: Reverse causality detected (p=0.0000)
+
+============================================================
+  GRANGER CAUSALITY SUMMARY TABLE
+============================================================
++-----------------------------+----------+-----------+----------+
+| Causing → Caused            |   F-stat |   p-value | Result   |
++=============================+==========+===========+==========+
+| 3m ir → stablecoin          |    4.572 |    0.0004 | ***      |
++-----------------------------+----------+-----------+----------+
+| gas_fees → stablecoin       |    3.059 |    0.0093 | ***      |
++-----------------------------+----------+-----------+----------+
+| ethperpetual → stablecoin   |    3.754 |    0.0022 | ***      |
++-----------------------------+----------+-----------+----------+
+| VIX → stablecoin            |    0.978 |    0.4294 | No       |
++-----------------------------+----------+-----------+----------+
+| volatility_btc → stablecoin |    6.014 |    0      | ***      |
++-----------------------------+----------+-----------+----------+
+| stablecoin → 3m ir          |    5.576 |    0      | ***      |
++-----------------------------+----------+-----------+----------+
+
+✓ Saved LaTeX table: granger_TVL_Plateau.tex
+
+============================================================
+  IMPULSE RESPONSE FUNCTIONS
+============================================================
+
+/opt/anaconda3/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+  self._init_dates(dates, freq)
+
+✓ Saved clean IRF plot: irf_stablecoin_to_3m ir_TVL_Plateau_clean.png
+
+<Figure size 600x400 with 1 Axes>

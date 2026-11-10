@@ -1,0 +1,9 @@
+
+--- Variance Inflation Factor (VIF) ---
+          feature       VIF
+0       future 2y  1.003568
+1    ethperpetual  1.646150
+2        gas_fees  2.660786
+3             VIX  1.106781
+4      btc_return  1.122065
+5  volatility_btc  2.159112

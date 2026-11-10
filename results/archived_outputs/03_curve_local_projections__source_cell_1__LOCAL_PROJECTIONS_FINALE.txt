@@ -1,0 +1,84 @@
+<original notebook execution>:10: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_full = pd.read_csv('aavenew.csv', parse_dates=['date'], dayfirst=True).set_index('date')
+<original notebook execution>:11: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df_surprises = pd.read_csv('ABJ-2024.csv', parse_dates=['date'], dayfirst=True).set_index('date')
+
+Number of FOMC events: 27
+Sample period: 2021-01-01 00:00:00 to 2025-09-11 00:00:00
+
+Estimating horizon h=0...
+  N events: 0
+  ⚠️ Error estimating model: zero-size array to reduction operation maximum which has no identity
+
+Estimating horizon h=1...
+  N events: 26
+  β(1) = -0.013858, p = 0.7124
+
+Estimating horizon h=2...
+  N events: 24
+  β(2) = 0.014285, p = 0.1033
+
+Estimating horizon h=3...
+  N events: 17
+  β(3) = 0.002640, p = 0.3888
+
+Estimating horizon h=5...
+  N events: 20
+  β(5) = 0.007559*, p = 0.0742
+
+Estimating horizon h=7...
+  N events: 26
+  β(7) = 0.025362***, p = 0.0001
+
+Estimating horizon h=10...
+  N events: 23
+  β(10) = 0.020812, p = 0.1720
+
+Estimating horizon h=15...
+  N events: 21
+  β(15) = -0.006079, p = 0.4921
+
+Estimating horizon h=20...
+  N events: 26
+  β(20) = -0.000537, p = 0.9776
+
+Estimating horizon h=30...
+  N events: 26
+  β(30) = -0.002425, p = 0.4759
+
+================================================================================
+LOCAL PROJECTIONS RESULTS (FOMC Events)
+================================================================================
+ horizon      beta       se     pval  nobs
+       1 -0.013858 0.037594 0.712413    26
+       2  0.014285 0.008768 0.103263    24
+       3  0.002640 0.003063 0.388750    17
+       5  0.007559 0.004234 0.074231    20
+       7  0.025362 0.006556 0.000109    26
+      10  0.020812 0.015237 0.171982    23
+      15 -0.006079 0.008850 0.492114    21
+      20 -0.000537 0.019117 0.977572    26
+      30 -0.002425 0.003402 0.475919    26
+
+<Figure size 1200x600 with 1 Axes>
+
+✅ Plot saved: 'local_projections_fomc_3pool.png'
+
+================================================================================
+INTERPRETATION
+================================================================================
+
+SHORT RUN (1-7 days):
+  Average β = 0.007198
+  Significant: 1/5 horizons
+  → POSITIVE short-run effect
+
+LONG RUN (>15 days):
+  Average β = -0.001481
+  Significant: 0/2 horizons
+  → NEGATIVE long-run effect
+
+--------------------------------------------------------------------------------
+RECONCILIATION:
+--------------------------------------------------------------------------------
+================================================================================
