@@ -16,7 +16,7 @@ The empirical framework combines FOMC event studies, local projections, VAR anal
 
 ## Start here
 
-1. Read `thesis/Thesis Nova 2026 Luca Paul Beitone.pdf`.
+1. Read `thesis/Thesis.pdf`.
 2. Use [CODE_MAP.md](docs/CODE_MAP.md) to locate the notebook behind each result.
 3. Open `notebooks/` in JupyterLab. The delivered notebooks have recorded outputs, so their results can be inspected without rerunning anything.
 
